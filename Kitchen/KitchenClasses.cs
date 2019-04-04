@@ -17,14 +17,11 @@ namespace Kitchen
         private string name;
         private string description;
         private Measurement measurement;
-        Ingredient() {
-            this.name = "Empty Ingredient";
-            this.description = "Empty Description";
-        }
-        Ingredient(string name)
+        Ingredient(string name, MeasurementTypes m, double quantity)
         {
             this.name = name;
             this.description = "No Description Given Yet";
+            this.measurement = new Measurement(m, quantity);
         }
         Ingredient(string name, string description) {
             this.name = name;
@@ -39,17 +36,19 @@ namespace Kitchen
         private Dictionary<Ingredient, int> ingredients;
         string[] steps;
     }
-    class Day {
+    class MealDay {
         private string[] timeOfDay;
         private LinkedList<Recipe> meals;
         
     }
     class Measurement {
-        private string measurementType;
-        private int measurementQuantity;
+        private double measurementQuantity;
         private MeasurementTypes measurementTypeM;
-        public string MeasurementType{ get { return this.measurementType; } set { this.measurementType = value; } }
-        public int MeasurementQuantity { get { return this.measurementQuantity; } set { this.measurementQuantity = value; } }
+        public Measurement(MeasurementTypes type, double quantity) {
+            this.measurementTypeM = type;
+            this.measurementQuantity = quantity;
+        }
+        public double MeasurementQuantity { get { return this.measurementQuantity; } set { this.measurementQuantity = value; } }
         public MeasurementTypes MeasurementTypeM { get { return this.measurementTypeM; } set { this.measurementTypeM = value; } }
     }
 }
