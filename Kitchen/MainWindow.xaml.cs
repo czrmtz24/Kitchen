@@ -23,6 +23,17 @@ namespace Kitchen
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+       
+        private void toIngredients(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void pageLoaded(object sender, EventArgs e)
+        {
+            
         }
     }
 }

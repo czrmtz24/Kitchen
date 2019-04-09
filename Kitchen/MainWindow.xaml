@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kitchen"
         mc:Ignorable="d" FontSize="32" FontFamily="OCR A Extended"
-        Title="Meal Planner" Height="450" Width="800">
+        Title="Meal Planner" Height="450" Width="800" Initialized="pageLoaded">
     <Grid>
+        
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Cesar\Source\Repos\czrmtz24\Kitchen\Kitchen\vegetables.jpg" Opacity=".75"/>
+            <ImageBrush ImageSource="C:\Users\Cesar\Source\Repos\czrmtz24\Kitchen\Kitchen\vegetables.jpg" Opacity=".75" Stretch="UniformToFill"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -36,7 +37,7 @@
         <TextBlock Grid.Column="1" Grid.Row="5" Text="Shopping List" FontWeight="Bold" Margin="0,0,0,10"/>
 
         <Button Grid.Column="2" Grid.Row="2" Content="Go"/>
-        <Button Grid.Column="2" Grid.Row="3" Content="Go"/>
+        <Button Grid.Column="2" Grid.Row="3" Content="Go" Click="toIngredients"/>
         <Button Grid.Column="2" Grid.Row="4" Content="Go"/>
         <Button Grid.Column="2" Grid.Row="5" Content="Go"/>
 
