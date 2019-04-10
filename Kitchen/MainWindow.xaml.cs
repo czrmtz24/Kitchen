@@ -1,6 +1,4 @@
-﻿using Kitchen.viewModels;
-using Kitchen.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,37 +26,27 @@ namespace Kitchen
             InitializeComponent();
             
         }
-        private void pageLoaded(object sender, EventArgs e)
-        {
-
-        }
         private void toIngredients(object sender, RoutedEventArgs e)
         {
-            DataContext = new ingredientViewModel();
         }
         private void toRecipes(object sender, RoutedEventArgs e)
         {
-            DataContext = new recipeView();
         }
 
         private void toAddIngredients(object sender, RoutedEventArgs e)
         {
-            DataContext = new addIngredientViewModel();
         }
 
         private void toAddRecipe(object sender, RoutedEventArgs e)
         {
-            DataContext = new addRecipeViewModel();
         }
 
         private void toMealPlan(object sender, RoutedEventArgs e)
         {
-            DataContext = new planViewModel();
         }
 
         private void toShoppingList(object sender, RoutedEventArgs e)
         {
-            DataContext = new shoppingListViewModel();
         }
 
         private void exit(object sender, RoutedEventArgs e)

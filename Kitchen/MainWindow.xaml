@@ -4,30 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kitchen"
-        xmlns:viewModels="clr-namespace:Kitchen.viewModels"
-        xmlns:views="clr-namespace:Kitchen.Views"
         mc:Ignorable="d" FontSize="32" FontFamily="OCR A Extended"
-        Title="Meal Planner" Height="450" Width="800" Initialized="pageLoaded">
-    <Window.Resources>
-        <DataTemplate x:Name="RecipeTemplate" DataType="{x:Type viewModels:recipeViewModel}">
-            <views:recipeView DataContext="{Binding}"/>
-        </DataTemplate>
-        <DataTemplate x:Name="AddRecipeTemplate" DataType="{x:Type viewModels:addRecipeViewModel}">
-            <views:addRecipe DataContext="{Binding}"/>
-        </DataTemplate>
-        <DataTemplate x:Name="IngredientTemplate" DataType="{x:Type viewModels:ingredientViewModel}">
-            <views:ingredientsView DataContext="{Binding}"/>
-        </DataTemplate>
-        <DataTemplate x:Name="AddIngredientTemplate" DataType="{x:Type viewModels:addIngredientViewModel}">
-            <views:addIngredients DataContext="{Binding}"/>
-        </DataTemplate>
-        <DataTemplate x:Name="PlanTemplate" DataType="{x:Type viewModels:planViewModel}">
-            <views:planView DataContext="{Binding}"/>
-        </DataTemplate>
-        <DataTemplate x:Name="ShoppingTemplate" DataType="{x:Type viewModels:shoppingListViewModel}">
-            <views:shoppingList DataContext="{Binding}"/>
-        </DataTemplate>
-    </Window.Resources>
+        Title="Meal Planner" Height="450" Width="800">
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="vegetables.jpg" Opacity=".5" Stretch="UniformToFill"/>
@@ -73,6 +52,5 @@
         <Button Grid.Column="2" Grid.Row="8" Content="Exit" FontSize="28" Margin="0,0,10,0" Click="exit"/>
 
 
-        <ContentControl Grid.Column="3" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="4" Content="{Binding}"/>
     </Grid>
 </Window>
