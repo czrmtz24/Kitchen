@@ -16,12 +16,12 @@ namespace Kitchen
     {
         private string name;
         private string description;
-        private Measurement measurement;
-        Ingredient(string name, MeasurementTypes m, double quantity)
+        private string measurement;
+        Ingredient(string name, string m, string description)
         {
             this.name = name;
-            this.description = "No Description Given Yet";
-            this.measurement = new Measurement(m, quantity);
+            this.description = description;
+            this.measurement = m;
         }
         Ingredient(string name, string description) {
             this.name = name;
@@ -29,12 +29,15 @@ namespace Kitchen
         }
         public string Name{ get { return this.name; } set { this.name = value; } }
         public string Description { get { return this.description; } set { this.description = value; } }
+        
         void Describe() { System.Console.WriteLine(name + ": " + description); }
     }
     class Recipe
     {
-        private Dictionary<Ingredient, int> ingredients;
-        string[] steps;
+        private string name;
+        private string description;
+        private LinkedList<Ingredient> ingredients;
+        private LinkedList<string> steps;
     }
     class MealDay {
         private string[] timeOfDay;

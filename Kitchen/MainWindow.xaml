@@ -8,49 +8,7 @@
         Title="Meal Planner" Height="450" Width="800">
 
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="vegetables.jpg" Opacity=".5" Stretch="UniformToFill"/>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="1" FontSize ="48" Text="Main Menu" FontWeight="Bold" Margin="0,0,0,10" />
-        <TextBlock Grid.Column="1" Grid.Row="2" Text="My Recipes" FontWeight="Bold" Margin="0,0,0,10"/>
-        <TextBlock Grid.Column="1" Grid.Row="3" Text="Add Recipe" FontWeight="Bold" Margin="0,0,0,10"/>
-        <TextBlock Grid.Column="1" Grid.Row="4" Text="My Ingredients" FontWeight="Bold" Margin="0,0,0,10"/>
-        <TextBlock Grid.Column="1" Grid.Row="5" Text="Add Ingredient" FontWeight="Bold" Margin="0,0,0,10"/>
-        <TextBlock Grid.Column="1" Grid.Row="6" Text="Meal Plan" FontWeight="Bold" Margin="0,0,0,10"/>
-        <TextBlock Grid.Column="1" Grid.Row="7" Text="Shopping List" FontWeight="Bold" Margin="0,0,0,10"/>
-        <TextBlock Grid.Column="1" Grid.Row="8" Text="Exit" FontWeight="Bold" Margin="0,0,0,10"/>
 
-        <Button Grid.Column="2" Grid.Row="2" Content="Go" FontSize="28" Margin="0,0,10,0" Click="toRecipes"/>
-        <Button Grid.Column="2" Grid.Row="3" Content="Go" FontSize="28" Margin="0,0,10,0" Click="toAddRecipe"/>
-        <Button Grid.Column="2" Grid.Row="4" Content="Go" FontSize="28" Margin="0,0,10,0" Click="toIngredients"/>
-        <Button Grid.Column="2" Grid.Row="5" Content="Go" FontSize="28" Margin="0,0,10,0" Click="toAddIngredients"/>
-        <Button Grid.Column="2" Grid.Row="6" Content="Go" FontSize="28" Margin="0,0,10,0" Click="toMealPlan"/>
-        <Button Grid.Column="2" Grid.Row="7" Content="Go" FontSize="28" Margin="0,0,10,0" Click="toShoppingList"/>
-        <Button Grid.Column="2" Grid.Row="8" Content="Exit" FontSize="28" Margin="0,0,10,0" Click="exit"/>
-
-
+        <Frame x:Name="ContentFrame" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Visible" IsTabStop="False"/>
     </Grid>
 </Window>
