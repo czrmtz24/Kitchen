@@ -12,15 +12,21 @@
         <DataTemplate x:Name="RecipeTemplate" DataType="{x:Type viewModels:recipeViewModel}">
             <views:recipeView DataContext="{Binding}"/>
         </DataTemplate>
-        
+        <DataTemplate x:Name="AddRecipeTemplate" DataType="{x:Type viewModels:addIngredientViewModel}">
+            <views:addRecipe DataContext="{Binding}"/>
+        </DataTemplate>
         <DataTemplate x:Name="IngredientTemplate" DataType="{x:Type viewModels:ingredientViewModel}">
             <views:ingredientsView DataContext="{Binding}"/>
         </DataTemplate>
-        
+        <DataTemplate x:Name="AddIngredientTemplate" DataType="{x:Type viewModels:addIngredientViewModel}">
+            <views:addIngredients DataContext="{Binding}"/>
+        </DataTemplate>
         <DataTemplate x:Name="PlanTemplate" DataType="{x:Type viewModels:planViewModel}">
             <views:planView DataContext="{Binding}"/>
         </DataTemplate>
-        
+        <DataTemplate x:Name="ShoppingTemplate" DataType="{x:Type viewModels:shoppingListViewModel}">
+            <views:shoppingList DataContext="{Binding}"/>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.Background>
@@ -55,15 +61,17 @@
         <TextBlock Grid.Column="1" Grid.Row="5" Text="Add Ingredient" FontWeight="Bold" Margin="0,0,0,10"/>
         <TextBlock Grid.Column="1" Grid.Row="6" Text="Meal Plan" FontWeight="Bold" Margin="0,0,0,10"/>
         <TextBlock Grid.Column="1" Grid.Row="7" Text="Shopping List" FontWeight="Bold" Margin="0,0,0,10"/>
-        
-        <Button Grid.Column="2" Grid.Row="2" Content="Go"/>
-        <Button Grid.Column="2" Grid.Row="3" Content="Go" Click="toIngredients"/>
-        <Button Grid.Column="2" Grid.Row="4" Content="Go"/>
-        <Button Grid.Column="2" Grid.Row="5" Content="Go"/>
-        <Button Grid.Column="2" Grid.Row="6" Content="Go"/>
-        <Button Grid.Column="2" Grid.Row="7" Content="Go"/>
+        <TextBlock Grid.Column="1" Grid.Row="8" Text="Exit" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <Button Grid.Column="2" Grid.Row="2" Content="Go" FontSize="28" Margin="0,0,10,0" Click="toRecipes"/>
+        <Button Grid.Column="2" Grid.Row="3" Content="Go" FontSize="28" Margin="0,0,10,0" Click="toAddRecipe"/>
+        <Button Grid.Column="2" Grid.Row="4" Content="Go" FontSize="28" Margin="0,0,10,0" Click="toIngredients"/>
+        <Button Grid.Column="2" Grid.Row="5" Content="Go" FontSize="28" Margin="0,0,10,0" Click="toAddIngredients"/>
+        <Button Grid.Column="2" Grid.Row="6" Content="Go" FontSize="28" Margin="0,0,10,0" Click="toMealPlan"/>
+        <Button Grid.Column="2" Grid.Row="7" Content="Go" FontSize="28" Margin="0,0,10,0" Click="toShoppingList"/>
+        <Button Grid.Column="2" Grid.Row="8" Content="Exit" FontSize="28" Margin="0,0,10,0" Click="exit"/>
 
 
-        <ContentControl Grid.Column="3" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="4" Content="{Binding}"/>
+        <ContentControl Grid.Column="3" Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="4" Content="{Binding}"/>
     </Grid>
 </Window>
