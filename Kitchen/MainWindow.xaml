@@ -12,7 +12,7 @@
         <DataTemplate x:Name="RecipeTemplate" DataType="{x:Type viewModels:recipeViewModel}">
             <views:recipeView DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="AddRecipeTemplate" DataType="{x:Type viewModels:addIngredientViewModel}">
+        <DataTemplate x:Name="AddRecipeTemplate" DataType="{x:Type viewModels:addRecipeViewModel}">
             <views:addRecipe DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate x:Name="IngredientTemplate" DataType="{x:Type viewModels:ingredientViewModel}">
@@ -30,7 +30,7 @@
     </Window.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="vegetables.jpg" Opacity=".75" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="vegetables.jpg" Opacity=".5" Stretch="UniformToFill"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -51,10 +51,11 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="1" FontSize ="48" Text="Main Menu" FontWeight="Bold" Margin="0,0,0,10"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" FontSize ="48" Text="Main Menu" FontWeight="Bold" Margin="0,0,0,10" />
         <TextBlock Grid.Column="1" Grid.Row="2" Text="My Recipes" FontWeight="Bold" Margin="0,0,0,10"/>
         <TextBlock Grid.Column="1" Grid.Row="3" Text="Add Recipe" FontWeight="Bold" Margin="0,0,0,10"/>
         <TextBlock Grid.Column="1" Grid.Row="4" Text="My Ingredients" FontWeight="Bold" Margin="0,0,0,10"/>
