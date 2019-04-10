@@ -4,15 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kitchen"
+        xmlns:viewModels="clr-namespace:Kitchen.viewModels"
+        xmlns:views="clr-namespace:Kitchen.Views"
         mc:Ignorable="d" FontSize="32" FontFamily="OCR A Extended"
         Title="Meal Planner" Height="450" Width="800" Initialized="pageLoaded">
-    <Grid>
+    <Window.Resources>
+        <DataTemplate x:Name="RecipeTemplate" DataType="{x:Type viewModels:recipeViewModel}">
+            <views:recipeView DataContext="{Binding}"/>
+        </DataTemplate>
         
+        <DataTemplate x:Name="IngredientTemplate" DataType="{x:Type viewModels:ingredientViewModel}">
+            <views:ingredientsView DataContext="{Binding}"/>
+        </DataTemplate>
+        
+        <DataTemplate x:Name="PlanTemplate" DataType="{x:Type viewModels:planViewModel}">
+            <views:planView DataContext="{Binding}"/>
+        </DataTemplate>
+        
+    </Window.Resources>
+    <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Cesar\Source\Repos\czrmtz24\Kitchen\Kitchen\vegetables.jpg" Opacity=".75" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="vegetables.jpg" Opacity=".75" Stretch="UniformToFill"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
@@ -27,19 +43,27 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize ="48" Text="Main Menu" FontWeight="Bold" Margin="0,0,0,10"/>
         <TextBlock Grid.Column="1" Grid.Row="2" Text="My Recipes" FontWeight="Bold" Margin="0,0,0,10"/>
-        <TextBlock Grid.Column="1" Grid.Row="3" Text="My Ingredients" FontWeight="Bold" Margin="0,0,0,10"/>
-        <TextBlock Grid.Column="1" Grid.Row="4" Text="Meal Plan" FontWeight="Bold" Margin="0,0,0,10"/>
-        <TextBlock Grid.Column="1" Grid.Row="5" Text="Shopping List" FontWeight="Bold" Margin="0,0,0,10"/>
-
+        <TextBlock Grid.Column="1" Grid.Row="3" Text="Add Recipe" FontWeight="Bold" Margin="0,0,0,10"/>
+        <TextBlock Grid.Column="1" Grid.Row="4" Text="My Ingredients" FontWeight="Bold" Margin="0,0,0,10"/>
+        <TextBlock Grid.Column="1" Grid.Row="5" Text="Add Ingredient" FontWeight="Bold" Margin="0,0,0,10"/>
+        <TextBlock Grid.Column="1" Grid.Row="6" Text="Meal Plan" FontWeight="Bold" Margin="0,0,0,10"/>
+        <TextBlock Grid.Column="1" Grid.Row="7" Text="Shopping List" FontWeight="Bold" Margin="0,0,0,10"/>
+        
         <Button Grid.Column="2" Grid.Row="2" Content="Go"/>
         <Button Grid.Column="2" Grid.Row="3" Content="Go" Click="toIngredients"/>
         <Button Grid.Column="2" Grid.Row="4" Content="Go"/>
         <Button Grid.Column="2" Grid.Row="5" Content="Go"/>
+        <Button Grid.Column="2" Grid.Row="6" Content="Go"/>
+        <Button Grid.Column="2" Grid.Row="7" Content="Go"/>
 
+
+        <ContentControl Grid.Column="3" Grid.Row="1" Grid.RowSpan="6" Grid.ColumnSpan="4" Content="{Binding}"/>
     </Grid>
 </Window>

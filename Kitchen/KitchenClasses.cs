@@ -27,8 +27,8 @@ namespace Kitchen
             this.name = name;
             this.description = description;
         }
-        public string Name{ get { return this.name; } }
-        public string Description { get { return this.description; } }
+        public string Name{ get { return this.name; } set { this.name = value; } }
+        public string Description { get { return this.description; } set { this.description = value; } }
         void Describe() { System.Console.WriteLine(name + ": " + description); }
     }
     class Recipe

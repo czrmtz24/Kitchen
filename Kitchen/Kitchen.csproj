@@ -36,6 +36,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -54,10 +56,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Ingredients.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="viewModels\ingredientViewModel.cs" />
+    <Compile Include="viewModels\planViewModel.cs" />
+    <Compile Include="viewModels\recipeViewModel.cs" />
+    <Compile Include="Views\ingredientsView.xaml.cs">
+      <DependentUpon>ingredientsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\planView.xaml.cs">
+      <DependentUpon>planView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\recipeView.xaml.cs">
+      <DependentUpon>recipeView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,30 +76,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Ingredients.xaml.cs">
-      <DependentUpon>Ingredients.xaml</DependentUpon>
-    </Compile>
     <Compile Include="KitchenClasses.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Meal Plan.xaml">
+    <Page Include="Views\ingredientsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Recipes.xaml">
+    <Page Include="Views\planView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\recipeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Meal Plan.xaml.cs">
-      <DependentUpon>Meal Plan.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Recipes.xaml.cs">
-      <DependentUpon>Recipes.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -115,5 +120,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="vegetables.jpg" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

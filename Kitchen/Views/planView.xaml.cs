@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Kitchen
+namespace Kitchen.Views
 {
     /// <summary>
-    /// Interaction logic for Ingredients.xaml
+    /// Interaction logic for planView.xaml
     /// </summary>
-    public partial class Ingredients : Page
+    public partial class planView : UserControl
     {
-        public Ingredients()
+        public planView()
         {
             InitializeComponent();
         }

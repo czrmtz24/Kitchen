@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kitchen.viewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace Kitchen
 {
@@ -28,7 +30,7 @@ namespace Kitchen
        
         private void toIngredients(object sender, RoutedEventArgs e)
         {
-            
+            DataContext = new ingredientViewModel();
         }
 
         private void pageLoaded(object sender, EventArgs e)
