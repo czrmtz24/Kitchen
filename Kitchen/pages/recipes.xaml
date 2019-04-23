@@ -11,6 +11,7 @@
     <Grid x:Name="TheGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions> 
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>

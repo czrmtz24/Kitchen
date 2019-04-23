@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using static Kitchen.Globals;
 
 namespace Kitchen
 {
@@ -24,11 +24,11 @@ namespace Kitchen
         private Kitchen.pages.mainMenu mainMenu;
         private Kitchen.pages.recipes recipes;
         private Kitchen.pages.viewRecipes viewRecipes;
-        public LinkedList<Recipe> recipeList;
+        
         public MainWindow()
         {
             InitializeComponent();
-            recipeList = new LinkedList<Recipe>();
+            Globals.userData = new UserData();
             loadRecipes();
             CreatePages();
             Main.Navigate(mainMenu);
@@ -44,7 +44,7 @@ namespace Kitchen
             mainMenu = new pages.mainMenu();
             mainMenu.PageFinished += pageFinished;
 
-            recipes = new pages.recipes(recipeList);
+            recipes = new pages.recipes();
             recipes.PageFinished += pageFinished;
 
             viewRecipes = new pages.viewRecipes();
@@ -82,7 +82,8 @@ namespace Kitchen
             ingredients.AddLast(pepper);
 
             Recipe lasagna = new Recipe(name, description, ingredients, steps);
-            recipeList.AddLast(lasagna);
+            userData.addRecipe(lasagna);
+            //recipeList.AddLast(lasagna);
         }
     }
 }

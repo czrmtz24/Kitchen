@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using static Kitchen.Globals;
 namespace Kitchen.pages
 {
     /// <summary>
@@ -25,25 +25,25 @@ namespace Kitchen.pages
         public recipes()
         {
             InitializeComponent();
-            myRecipes = new LinkedList<Recipe>();
             loadRecipes();
         }
-        public recipes(LinkedList<Recipe> recipes) : this() {
-            foreach (Recipe recipe in recipes) {
-                myRecipes.AddLast(recipe);
-            }
-        }
+
         public void loadRecipes() {
-            int count = myRecipes.Count;
+            int count = userData.MyRecipes.Count;
 
             for (int i = 0; i < count; i++)
             {
-                TheGrid.RowDefinitions.Add(new RowDefinition());
+                RowDefinition r1 = new RowDefinition();
+                r1.Height = GridLength.Auto;
+                TheGrid.RowDefinitions.Add(r1);
                 Button button = new Button();
-                Recipe tempRecipe = myRecipes.ElementAt(i);
+                Recipe tempRecipe = userData.myRecipes.ElementAt(i);
                 button.Content = tempRecipe.Name;
                 Grid.SetRow(button, i+1);
+                Grid.SetColumn(button, 1);
+                
                 System.Console.WriteLine(tempRecipe.Name);
+                TheGrid.Children.Add(button);
             }
 
 

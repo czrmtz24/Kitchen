@@ -73,4 +73,65 @@ namespace Kitchen
         public double MeasurementQuantity { get { return this.measurementQuantity; } set { this.measurementQuantity = value; } }
         public MeasurementTypes MeasurementTypeM { get { return this.measurementTypeM; } set { this.measurementTypeM = value; } }
     }
+    public class UserData {
+        public LinkedList<Recipe> myRecipes;
+        public LinkedList<Ingredient> myIngredients;
+
+        public UserData()
+        {
+            myRecipes = new LinkedList<Recipe>();
+            myIngredients = new LinkedList<Ingredient>();
+        }
+
+        public LinkedList<Recipe> MyRecipes {
+            get { return this.myRecipes; }
+        }
+        public LinkedList<Ingredient> MyIngredients {
+            get { return this.myIngredients; }
+        }
+
+        public void addRecipe(Recipe incRecipe) {
+            myRecipes.AddLast(incRecipe);
+        }
+        public void addIngredient(Ingredient incIngredient)
+        {
+            myIngredients.AddLast(incIngredient);
+        }
+        public int deleteRecipe(string recipeName)
+        {
+            int count = myRecipes.Count;
+            LinkedListNode<Recipe> head = myRecipes.First;
+            for (int i = 0; i < count; i++)
+            {
+                if (head.Value.Name == recipeName)
+                {
+                    //delete
+                    myRecipes.Remove(head);
+                    return 0;
+                }
+                else {
+                    head = head.Next;
+                }
+            }
+            return -1;
+        }
+        public int deleteIngredient(string ingredientName)
+        {
+            int count = myIngredients.Count;
+            LinkedListNode<Ingredient> head = myIngredients.First;
+            for (int i = 0; i < count; i++)
+            {
+                if (head.Value.Name == ingredientName)
+                {
+                    myIngredients.Remove(head);
+                    return 0;
+                }
+                else
+                {
+                    head = head.Next;
+                }
+            }
+            return -1;
+        }
+    }
 }
