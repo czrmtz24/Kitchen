@@ -49,7 +49,22 @@ namespace Kitchen
         }
         private void pageFinished(object sender, EventArgs e)
         {
-
+            if (Main.Content == mainMenu) {
+                switch (mainMenu.choiceArray) {
+                    case 1:
+                        Main.Navigate(recipes);
+                        break;
+                    case 2:
+                        //Main.Navigate(inventory);
+                        break;
+                    case 3:
+                        //Main.Navigate(shoppingList
+                        break;
+                    case 4:
+                        this.Close();
+                        break;
+                }
+            }
         }
     }
 }
