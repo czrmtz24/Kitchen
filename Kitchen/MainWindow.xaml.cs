@@ -27,7 +27,8 @@ namespace Kitchen
         public MainWindow()
         {
             InitializeComponent();
-            Main.Content = new Kitchen.pages.mainMenu();
+            CreatePages();
+            Main.Navigate(mainMenu);
             
         }
         public void toRecipes()

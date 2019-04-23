@@ -21,10 +21,15 @@ namespace Kitchen.pages
     public partial class mainMenu : Page
     {
         public event EventHandler PageFinished;
+        public int choiceArray;
         public mainMenu()
         {
             InitializeComponent();
-        }
 
+        }
+        public void toRecipes(object sender, RoutedEventArgs e) {
+            choiceArray = 1;
+            PageFinished(new object(), new EventArgs());
+        }
     }
 }
