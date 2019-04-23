@@ -12,18 +12,18 @@ namespace Kitchen
     enum MeasurementTypes {
         grams, ounces, pounds, teaspoons, tablespoons, cups, pints, quarts, gallons
     }
-    class Ingredient
+    public class Ingredient
     {
         private string name;
         private string description;
         private string measurement;
-        Ingredient(string name, string m, string description)
+        public Ingredient(string name, string m, string description)
         {
             this.name = name;
             this.description = description;
             this.measurement = m;
         }
-        Ingredient(string name, string description) {
+        public Ingredient(string name, string description) {
             this.name = name;
             this.description = description;
         }
@@ -32,12 +32,31 @@ namespace Kitchen
         
         void Describe() { System.Console.WriteLine(name + ": " + description); }
     }
-    class Recipe
+    public class Recipe
     {
         private string name;
         private string description;
         private LinkedList<Ingredient> ingredients;
         private LinkedList<string> steps;
+
+        public Recipe(string name, string description, LinkedList<Ingredient> incIngredients, LinkedList<string> incSteps)
+        {
+            this.name = name;
+            this.description = description;
+            ingredients = new LinkedList<Ingredient>();
+            foreach (Ingredient ingredient in incIngredients) {
+                ingredients.AddLast(ingredient);
+            }
+            steps = new LinkedList<string>();
+            foreach (string step in incSteps)
+            {
+                steps.AddLast(step);
+            }
+        }
+        public string Name { get { return this.name; } }
+        public string Description { get { return this.description; } }
+        public LinkedList<Ingredient> Ingredients { get { return this.ingredients; } }
+        public LinkedList<string> Steps { get { return this.steps; } }
     }
     class MealDay {
         private string[] timeOfDay;

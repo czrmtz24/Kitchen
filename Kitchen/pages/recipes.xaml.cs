@@ -20,10 +20,33 @@ namespace Kitchen.pages
     /// </summary>
     public partial class recipes : Page
     {
+        LinkedList<Recipe> myRecipes;
         public event EventHandler PageFinished;
         public recipes()
         {
             InitializeComponent();
+            myRecipes = new LinkedList<Recipe>();
+            loadRecipes();
+        }
+        public recipes(LinkedList<Recipe> recipes) : this() {
+            foreach (Recipe recipe in recipes) {
+                myRecipes.AddLast(recipe);
+            }
+        }
+        public void loadRecipes() {
+            int count = myRecipes.Count;
+
+            for (int i = 0; i < count; i++)
+            {
+                TheGrid.RowDefinitions.Add(new RowDefinition());
+                Button button = new Button();
+                Recipe tempRecipe = myRecipes.ElementAt(i);
+                button.Content = tempRecipe.Name;
+                Grid.SetRow(button, i+1);
+                System.Console.WriteLine(tempRecipe.Name);
+            }
+
+
         }
     }
 }

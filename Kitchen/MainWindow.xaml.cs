@@ -24,9 +24,12 @@ namespace Kitchen
         private Kitchen.pages.mainMenu mainMenu;
         private Kitchen.pages.recipes recipes;
         private Kitchen.pages.viewRecipes viewRecipes;
+        public LinkedList<Recipe> recipeList;
         public MainWindow()
         {
             InitializeComponent();
+            recipeList = new LinkedList<Recipe>();
+            loadRecipes();
             CreatePages();
             Main.Navigate(mainMenu);
             
@@ -36,12 +39,12 @@ namespace Kitchen
             Main.Content = new Kitchen.pages.viewRecipes();
         }
 
-        public void CreatePages()
+        private void CreatePages()
         {
             mainMenu = new pages.mainMenu();
             mainMenu.PageFinished += pageFinished;
 
-            recipes = new pages.recipes();
+            recipes = new pages.recipes(recipeList);
             recipes.PageFinished += pageFinished;
 
             viewRecipes = new pages.viewRecipes();
@@ -65,6 +68,21 @@ namespace Kitchen
                         break;
                 }
             }
+        }
+        public void loadRecipes() {
+            string name = "Lasagna";
+            string description = "The best lasagna in WSU";
+            LinkedList<string> steps = new LinkedList<string>();
+            LinkedList<Ingredient> ingredients = new LinkedList<Ingredient>();
+            Ingredient pepper = new Ingredient("pepper", "pepper", "1 tablespoon");
+            steps.AddLast("Turn oven to 350 degrees");
+            steps.AddLast("Put frozen lasagna in the oven");
+            steps.AddLast("Wait 35 minutes");
+
+            ingredients.AddLast(pepper);
+
+            Recipe lasagna = new Recipe(name, description, ingredients, steps);
+            recipeList.AddLast(lasagna);
         }
     }
 }
