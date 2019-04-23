@@ -21,37 +21,34 @@ namespace Kitchen
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Kitchen.pages.mainMenu mainMenu;
+        private Kitchen.pages.recipes recipes;
+        private Kitchen.pages.viewRecipes viewRecipes;
         public MainWindow()
         {
             InitializeComponent();
+            Main.Content = new Kitchen.pages.mainMenu();
             
         }
-        private void toIngredients(object sender, RoutedEventArgs e)
+        public void toRecipes()
         {
-        }
-        private void toRecipes(object sender, RoutedEventArgs e)
-        {
+            Main.Content = new Kitchen.pages.viewRecipes();
         }
 
-        private void toAddIngredients(object sender, RoutedEventArgs e)
+        public void CreatePages()
         {
-        }
+            mainMenu = new pages.mainMenu();
+            mainMenu.PageFinished += pageFinished;
 
-        private void toAddRecipe(object sender, RoutedEventArgs e)
-        {
-        }
+            recipes = new pages.recipes();
+            recipes.PageFinished += pageFinished;
 
-        private void toMealPlan(object sender, RoutedEventArgs e)
-        {
+            viewRecipes = new pages.viewRecipes();
+            viewRecipes.PageFinished += pageFinished;
         }
-
-        private void toShoppingList(object sender, RoutedEventArgs e)
+        private void pageFinished(object sender, EventArgs e)
         {
-        }
 
-        private void exit(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

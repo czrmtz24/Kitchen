@@ -20,9 +20,11 @@ namespace Kitchen.pages
     /// </summary>
     public partial class mainMenu : Page
     {
+        public event EventHandler PageFinished;
         public mainMenu()
         {
             InitializeComponent();
         }
+
     }
 }

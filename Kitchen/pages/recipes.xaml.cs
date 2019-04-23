@@ -16,12 +16,12 @@ using System.Windows.Shapes;
 namespace Kitchen.pages
 {
     /// <summary>
-    /// Interaction logic for viewRecipes.xaml
+    /// Interaction logic for recipes.xaml
     /// </summary>
-    public partial class viewRecipes : Page
+    public partial class recipes : Page
     {
         public event EventHandler PageFinished;
-        public viewRecipes()
+        public recipes()
         {
             InitializeComponent();
         }

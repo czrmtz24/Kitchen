@@ -8,7 +8,6 @@
         Title="Meal Planner" Height="450" Width="800">
 
     <Grid>
-
-        <Frame x:Name="ContentFrame" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Visible" IsTabStop="False"/>
+        <Frame x:Name="Main" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Visible" IsTabStop="False"/>
     </Grid>
 </Window>
