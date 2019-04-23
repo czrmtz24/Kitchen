@@ -26,6 +26,14 @@ namespace Kitchen.pages
         {
             InitializeComponent();
             loadRecipes();
+            //Button button = new Button();
+            //button.Content = "Add Recipe";
+            //Grid.SetColumn(button, 2);
+            //Grid.SetRow(button, 3);
+            //button.VerticalAlignment = VerticalAlignment.Bottom;
+            //button.HorizontalAlignment = HorizontalAlignment.Right;
+            //TheGrid.Children.Add(button);
+
         }
 
         public void loadRecipes() {

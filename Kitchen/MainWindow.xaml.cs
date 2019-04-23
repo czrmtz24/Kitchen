@@ -24,6 +24,7 @@ namespace Kitchen
         private Kitchen.pages.mainMenu mainMenu;
         private Kitchen.pages.recipes recipes;
         private Kitchen.pages.viewRecipes viewRecipes;
+        private Kitchen.pages.ingredients ingredients;
         
         public MainWindow()
         {
@@ -49,6 +50,9 @@ namespace Kitchen
 
             viewRecipes = new pages.viewRecipes();
             viewRecipes.PageFinished += pageFinished;
+
+            ingredients = new pages.ingredients();
+            ingredients.PageFinished += pageFinished;
         }
         private void pageFinished(object sender, EventArgs e)
         {
@@ -58,7 +62,7 @@ namespace Kitchen
                         Main.Navigate(recipes);
                         break;
                     case 2:
-                        //Main.Navigate(inventory);
+                        Main.Navigate(ingredients);
                         break;
                     case 3:
                         //Main.Navigate(shoppingList

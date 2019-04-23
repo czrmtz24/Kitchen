@@ -31,6 +31,10 @@ namespace Kitchen.pages
             choiceArray = 1;
             PageFinished(new object(), new EventArgs());
         }
+        public void toIngredients(object sender, RoutedEventArgs e) {
+            choiceArray = 2;
+            PageFinished(new object(), new EventArgs());
+        }
         public void exit(object sender, RoutedEventArgs e) {
             choiceArray = 4;
             PageFinished(new object(), new EventArgs());
