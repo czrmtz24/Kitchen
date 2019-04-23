@@ -4,9 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kitchen_Database
+namespace Kitchen_Inventory
 {
+
+    enum Measurement_Meta_Unit_t
+    {
+        Weight, Size, Count
+    }
+
     class Ingredient
     {
+
     }
 }

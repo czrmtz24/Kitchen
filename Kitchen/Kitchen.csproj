@@ -65,7 +65,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Globals.cs" />
+    <Compile Include="Ingredient.cs" />
     <Compile Include="KitchenClasses.cs" />
+    <Compile Include="Kitchen_Database.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -96,6 +98,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Measurement.cs" />
     <Compile Include="pages\addRecipe.xaml.cs">
       <DependentUpon>addRecipe.xaml</DependentUpon>
     </Compile>
