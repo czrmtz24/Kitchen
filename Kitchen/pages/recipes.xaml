@@ -13,6 +13,8 @@
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
@@ -22,11 +24,20 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <Button Content="Delete Recipe" Grid.Column="4" Grid.Row="4" Margin="0,0,10,0"/>
-        <Button Content="Add Recipe" Grid.Column="5" Grid.Row="4" Margin="0,0,0,0"/>
+        
+        <TextBlock Grid.Column="1" Grid.Row="2" Text="Meal Planner" Background="Transparent" FontWeight="Bold" Margin="0,0,0,0" FontSize="20"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" Text="Recipes" Background="Transparent" FontWeight="Bold" Margin="0,0,0,10"/>
+        <Button Content="Delete Recipe" Grid.Column="6" Grid.Row="10" Margin="0,0,10,0"/>
+        <Button Content="Add Recipe" Grid.Column="7" Grid.Row="10" Margin="0,0,0,0" Click="toAddRecipe"/>
     </Grid>
 </Page>

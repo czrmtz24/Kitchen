@@ -23,7 +23,7 @@ namespace Kitchen
     {
         private Kitchen.pages.mainMenu mainMenu;
         private Kitchen.pages.recipes recipes;
-        private Kitchen.pages.viewRecipes viewRecipes;
+        private Kitchen.pages.addRecipe addRecipe;
         private Kitchen.pages.ingredients ingredients;
         
         public MainWindow()
@@ -48,16 +48,18 @@ namespace Kitchen
             recipes = new pages.recipes();
             recipes.PageFinished += pageFinished;
 
-            viewRecipes = new pages.viewRecipes();
-            viewRecipes.PageFinished += pageFinished;
+            addRecipe = new pages.addRecipe();
+            addRecipe.PageFinished += pageFinished;
 
             ingredients = new pages.ingredients();
             ingredients.PageFinished += pageFinished;
         }
         private void pageFinished(object sender, EventArgs e)
         {
-            if (Main.Content == mainMenu) {
-                switch (mainMenu.choiceArray) {
+            if (Main.Content == mainMenu)
+            {
+                switch (mainMenu.choiceArray)
+                {
                     case 1:
                         Main.Navigate(recipes);
                         break;
@@ -69,6 +71,30 @@ namespace Kitchen
                         break;
                     case 4:
                         this.Close();
+                        break;
+                }
+            }
+            else if (Main.Content == recipes)
+            {
+                switch (recipes.choiceArray)
+                {
+                    case 1:
+                        //delete recipe
+                        break;
+                    case 2:
+                        Main.Navigate(addRecipe);
+                        break;
+                }
+            }
+            else if (Main.Content == addRecipe)
+            {
+                switch (addRecipe.choiceArray)
+                {
+                    case 1:
+                        //cancel out
+                        break;
+                    case 2:
+                        reset();
                         break;
                 }
             }
@@ -88,6 +114,19 @@ namespace Kitchen
             Recipe lasagna = new Recipe(name, description, ingredients, steps);
             userData.addRecipe(lasagna);
             //recipeList.AddLast(lasagna);
+        }
+        public void reset()
+        {
+            removeBackHistory();
+            CreatePages();
+            Main.Navigate(mainMenu);
+        }
+        public void removeBackHistory()
+        {
+            JournalEntry entry = Main.NavigationService.RemoveBackEntry();
+
+            while (entry != null)
+                entry = Main.NavigationService.RemoveBackEntry();
         }
     }
 }

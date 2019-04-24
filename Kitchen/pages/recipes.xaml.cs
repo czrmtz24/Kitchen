@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Controls.Primitives;
 using static Kitchen.Globals;
 namespace Kitchen.pages
 {
@@ -22,17 +23,12 @@ namespace Kitchen.pages
     {
         LinkedList<Recipe> myRecipes;
         public event EventHandler PageFinished;
+        public int choiceArray;
         public recipes()
         {
             InitializeComponent();
             loadRecipes();
-            //Button button = new Button();
-            //button.Content = "Add Recipe";
-            //Grid.SetColumn(button, 2);
-            //Grid.SetRow(button, 3);
-            //button.VerticalAlignment = VerticalAlignment.Bottom;
-            //button.HorizontalAlignment = HorizontalAlignment.Right;
-            //TheGrid.Children.Add(button);
+
 
         }
 
@@ -41,20 +37,22 @@ namespace Kitchen.pages
 
             for (int i = 0; i < count; i++)
             {
-                RowDefinition r1 = new RowDefinition();
-                r1.Height = GridLength.Auto;
-                TheGrid.RowDefinitions.Add(r1);
                 Button button = new Button();
                 Recipe tempRecipe = userData.myRecipes.ElementAt(i);
                 button.Content = tempRecipe.Name;
-                Grid.SetRow(button, i+1);
+                Grid.SetRow(button, i+4);
                 Grid.SetColumn(button, 1);
-                
-                System.Console.WriteLine(tempRecipe.Name);
+                System.Console.WriteLine($"Adding recipe to recipe view: {tempRecipe.Name}");
                 TheGrid.Children.Add(button);
             }
-
-
+        }
+        public void toAddRecipe(object sender, RoutedEventArgs e)
+        {
+            choiceArray = 2;
+            PageFinished(new object(), new EventArgs());
+        }
+        public void getNewRecipe(object sender, RoutedEventArgs e) {
+            choiceArray = 2;
         }
     }
 }
