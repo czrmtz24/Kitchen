@@ -135,11 +135,19 @@ namespace Kitchen
                         Main.Navigate(addIngredient);
                         break;
                     case 3:
+                        viewIngredient = new pages.viewIngredient();
+                        viewIngredient.PageFinished += pageFinished;
+                        viewIngredient.setText(ingredients.ingredientToView);
+                        viewIngredient.loadIngredient();
                         Main.Navigate(viewIngredient);
                         break;
                 }
             }
             else if (Main.Content == addIngredient)
+            {
+                reset();
+            }
+            else if (Main.Content == viewIngredient)
             {
                 reset();
             }

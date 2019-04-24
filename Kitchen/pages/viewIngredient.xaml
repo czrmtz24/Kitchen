@@ -45,6 +45,7 @@
         <TextBlock Grid.Column="1" Grid.Row="3" Text="Viewing Ingredient" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10"/>
         <TextBlock x:Name="IngredientName" Grid.Column="1" Grid.Row="4" Text="" Background="Transparent" FontWeight="Bold" FontSize ="28"  Margin="0,0,10,10" VerticalAlignment="Center"/>
         <TextBlock x:Name="IngredientDescription" Grid.Column="1" Grid.Row="5" Text="" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10" MinWidth="200"/>
-        <Button x:Name="DeleteIngredient" Content="Delete" Grid.Row="14" Grid.Column="9" FontWeight="Bold" />
+        <TextBlock x:Name="IngredientMeasurement" Grid.Column="1" Grid.Row="6" Text="" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10" MinWidth="200"/>
+        <Button x:Name="DeleteIngredient" Content="Delete" Grid.Row="14" Grid.Column="9" FontWeight="Bold" Click="DeleteIngredient_Click"/>
     </Grid>
 </Page>

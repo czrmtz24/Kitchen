@@ -72,7 +72,12 @@ namespace Kitchen.Inventory
         private Measurement m_Amount;
 
         //  Constructors    ///////////////////////////////////////////////////////////////////////
-
+        public Ingredient()
+        {
+            m_Amount = new Measurement(0, "");
+            m_sDescription = "";
+            m_sName = "";
+        }
         public Ingredient(Measurement amount, string sDescription, string sName)
         {
             m_Amount = amount;

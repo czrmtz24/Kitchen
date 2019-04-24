@@ -45,6 +45,6 @@
         <TextBlock Grid.Column="1" Grid.Row="3" Text="Viewing Recipe" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10"/>
         <TextBlock x:Name="RecipeName" Grid.Column="1" Grid.Row="4" Text="" Background="Transparent" FontWeight="Bold" FontSize ="28"  Margin="0,0,10,10" VerticalAlignment="Center"/>
         <TextBlock x:Name="RecipeDescription" Grid.Column="1" Grid.Row="5" Text="" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10" MinWidth="200"/>
-        <Button x:Name="DeleteRecipe" Content="Delete" Grid.Row="14" Grid.Column="9" FontWeight="Bold" Click="DeleteRecipe_Click"/>
+        <Button x:Name="DeleteRecipe" Content="Delete" Grid.Row="14" Grid.Column="9" FontWeight="Bold" Click ="DeleteRecipe_Click"/>
     </Grid>
 </Page>
