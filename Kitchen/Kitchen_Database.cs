@@ -1,5 +1,5 @@
-﻿using Kitchen_Inventory;
-using Kitchen_Meal;
+﻿using Kitchen.Inventory;
+using Kitchen.Meal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,7 +61,7 @@ namespace Kitchen_Database
             if (ingredientLoc > -1) //If the ingredient is found within the list
             {
                 //Calculate the amount of this ingredient left over and return
-                Ingredient currIngredient = Get_Ingredient(ingredientLoc);
+                Ingredient currIngredient = m_Inventory[ingredientLoc];
 
                 currIngredient.Amount -= usedIngredient.Amount;
                 return currIngredient.Amount.MeasurementAmount;
@@ -72,9 +72,5 @@ namespace Kitchen_Database
 
         //  Private Functions   ///////////////////////////////////////////////////////////////////
 
-        private static Ingredient Get_Ingredient(int index)
-        {
-            return m_Inventory[index];
-        }
     }
 }
