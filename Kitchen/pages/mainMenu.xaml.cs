@@ -40,5 +40,10 @@ namespace Kitchen.pages
             choiceArray = 4;
             PageFinished(new object(), new EventArgs());
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Kitchen_Database.SaveData();
+        }
     }
 }

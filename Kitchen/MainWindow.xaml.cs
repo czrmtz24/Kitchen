@@ -34,7 +34,7 @@ namespace Kitchen
         {
             InitializeComponent();
             
-            loadRecipes();
+            //loadRecipes();
             CreatePages();
             Main.Navigate(mainMenu);
             

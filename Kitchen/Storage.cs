@@ -37,7 +37,7 @@ namespace Kitchen.Storage
                             ingredientList.Add(newIngredient);
                         }
                         
-                    } while (sReadInLine != "STOP");
+                    } while ((sReadInLine != "STOP") && (sReadInLine != null));
                 }
             }
 
@@ -73,26 +73,32 @@ namespace Kitchen.Storage
                             parsedLine = sReadInLine.Split(',');
 
                             foreach (string s in parsedLine)
-                                newRecipe.Add_Step(s);
+                            {
+                                if(s != "")
+                                    newRecipe.Add_Step(s);
+                            }
+
+                            sReadInLine = streamReader.ReadLine();
+                            parsedLine = sReadInLine.Split(',');
 
                             //Read in ingredients
-                            do
+                            while (sReadInLine != "Z")
                             {
-                                sReadInLine = streamReader.ReadLine();
-                                parsedLine = sReadInLine.Split(',');
-
                                 Measurement newMeasurement = new Measurement(float.Parse(parsedLine[2]), parsedLine[3]);
                                 Ingredient newIngredient = new Ingredient(newMeasurement, parsedLine[1], parsedLine[0]);
 
                                 newRecipe.Add_Ingredient(newIngredient);
 
-                            } while (sReadInLine != "Z");
+                                sReadInLine = streamReader.ReadLine();
+                                parsedLine = sReadInLine.Split(',');
+
+                            }
 
                             //Add new recipe to the list
                             recipeList.Add(newRecipe);
                         }
 
-                    } while (sReadInLine != "STOP");
+                    } while ((sReadInLine != "STOP") && (sReadInLine != null));
                 }
             }
 
@@ -123,7 +129,7 @@ namespace Kitchen.Storage
                 {
                     foreach (Recipe r in recipeList)
                     {
-                        streamWriter.WriteLine("R,");
+                        streamWriter.WriteLine("R");
                         streamWriter.WriteLine($"{r.Name},{r.Description}");
 
                         foreach (string s in r.Steps)
@@ -135,6 +141,8 @@ namespace Kitchen.Storage
 
                         streamWriter.WriteLine("Z");
                     }
+
+                    streamWriter.WriteLine("STOP");
                 }
             }
         }
