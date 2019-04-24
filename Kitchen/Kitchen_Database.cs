@@ -1,5 +1,6 @@
 ﻿using Kitchen.Inventory;
 using Kitchen.Meal;
+using Kitchen.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,8 @@ namespace Kitchen
 
         static Kitchen_Database()
         {
-            m_Inventory = new List<Ingredient>();
-            m_RecipeList = new List<Recipe>();
+            m_Inventory = Kitchen.Storage.Storage.Load_Inventory();
+            m_RecipeList = Kitchen.Storage.Storage.Load_Recipes();
         }
 
         //  Properties  ///////////////////////////////////////////////////////////////////////////
@@ -39,6 +40,12 @@ namespace Kitchen
 
         //  Public Functions    ///////////////////////////////////////////////////////////////////
 
+        public static void SaveData()
+        {
+            Kitchen.Storage.Storage.Store_Inventory(m_Inventory);
+            Kitchen.Storage.Storage.Store_Recipes(m_RecipeList);
+        }
+        
         public static int Add_IngredientToInventory(Ingredient newIngredient)
         {
             //Add new ingredient to end of inventory list
