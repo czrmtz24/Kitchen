@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kitchen_Database
+namespace Kitchen
 {
     public static class Kitchen_Database
     {

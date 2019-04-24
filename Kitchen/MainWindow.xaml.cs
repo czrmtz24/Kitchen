@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Kitchen.Inventory;
+using Kitchen.Meal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static Kitchen.Globals;
-using static Kitchen.Kitchen_Database;
 
 namespace Kitchen
 {
@@ -31,7 +31,6 @@ namespace Kitchen
         public MainWindow()
         {
             InitializeComponent();
-            Globals.userData = new UserData();
             
             loadRecipes();
             CreatePages();

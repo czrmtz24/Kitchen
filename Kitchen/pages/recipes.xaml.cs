@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Kitchen.Meal;
+using Kitchen.Inventory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
-using static Kitchen.Globals;
+
 namespace Kitchen.pages
 {
     /// <summary>
@@ -25,6 +27,7 @@ namespace Kitchen.pages
         public event EventHandler PageFinished;
         public int choiceArray;
         public string recipeToView;
+
         public recipes()
         {
             InitializeComponent();
@@ -32,11 +35,13 @@ namespace Kitchen.pages
         }
 
         public void loadRecipes() {
-            int count = userData.MyRecipes.Count;
-            for (int i = 0; i < count; i++)
+            List<Recipe> recipeList = Kitchen_Database.Recipes;
+
+            for (int i = 0; i < recipeList.Count; i++)
             {
                 Button button = new Button();
-                Recipe tempRecipe = userData.myRecipes.ElementAt(i);
+                Recipe tempRecipe = recipeList[i];
+
                 button.Content = tempRecipe.Name;
                 Grid.SetRow(button, i+4);
                 Grid.SetColumn(button, 1);
@@ -53,22 +58,12 @@ namespace Kitchen.pages
         public void getNewRecipe(object sender, RoutedEventArgs e) {
             choiceArray = 2;
         }
-        public void deleteRecipe(object sender, RoutedEventArgs e)
-        {
-            if (userData.MyRecipes.Count == 0)
-            {
-                return;
-            }
-            choiceArray = 1;
-            userData.myRecipes.RemoveLast();
-            PageFinished(new object(), new EventArgs());
-        }
+
         public void toViewRecipe(object sender, RoutedEventArgs e)
         {
             choiceArray = 3;
             Button tempButton = sender as Button;
             recipeToView = tempButton.Content.ToString();
-            //System.Console.WriteLine(recipeName);
             PageFinished(new object(), new EventArgs());
         }
     }

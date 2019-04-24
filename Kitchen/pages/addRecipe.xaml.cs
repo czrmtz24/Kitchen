@@ -1,4 +1,5 @@
-﻿using Kitchen.Inventory;
+﻿using Kitchen;
+using Kitchen.Inventory;
 using Kitchen.Meal;
 using System;
 using System.Collections.Generic;
@@ -105,15 +106,16 @@ namespace Kitchen.pages
                 System.Console.WriteLine("submit failed");
                 return;
             }
-            choiceArray = 2;
-            string recipeName = RecipeName.Text;
-            string recipeDescription = RecipeDescription.Text;
 
-            Recipe recipe = new Recipe(recipeName, recipeDescription, ingredients, steps);
-            userData.addRecipe(recipe);
-            PageFinished(new object(), new EventArgs());
+            choiceArray = 2;
+
+            m_recipe.Name = RecipeName.Text;
+            m_recipe.Description = RecipeDescription.Text;
+
+            Kitchen_Database.Add_RecipeToList(m_recipe);
+
             System.Console.WriteLine("Submit suceeded");
-            
+            PageFinished(new object(), new EventArgs());            
         }
 
         private void Refresh()
