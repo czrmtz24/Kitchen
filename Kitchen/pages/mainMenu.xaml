@@ -29,6 +29,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
@@ -39,8 +40,9 @@
         <Button Grid.Column="1" Grid.Row="5" Content="My Inventory" FontWeight="Bold" Margin="0,0,0,10" Click="toIngredients"/>
         <Button Grid.Column="1" Grid.Row="6" Content="Meal Plan" FontWeight="Bold" Margin="0,0,0,10"/>
         <Button Grid.Column="1" Grid.Row="7" Content="Shopping List" FontWeight="Bold" Margin="0,0,0,10"/>
-        <Button Grid.Column="1" Grid.Row="8" Content="Exit" FontWeight="Bold" Margin="0,0,0,10" Click="exit"/>
-        <Button x:Name="button" Content="Button" Grid.Column="6" HorizontalAlignment="Left" Margin="36,5,0,0" Grid.Row="4" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.4,2" Click="Button_Click"/>
+        <Button x:Name="button" Grid.Column="1" Grid.Row="8" Content="Save" FontWeight="Bold" Margin="0,0,0,10"  Click="Button_Click"/>
+        <Button Grid.Column="1" Grid.Row="9" Content="Exit" FontWeight="Bold" Margin="0,0,0,10" Click="exit"/>
+        
 
     </Grid>
 </Page>
