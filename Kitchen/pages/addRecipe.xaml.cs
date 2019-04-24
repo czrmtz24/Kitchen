@@ -58,7 +58,7 @@ namespace Kitchen.pages
             for (int i=0; i < ingredientList.Count; i++)
             {
                 TextBlock textBlock = new TextBlock();
-                textBlock.Text = ingredients.ElementAt(i).Name;
+                textBlock.Text = ingredientList.ElementAt(i).Name;
                 Grid.SetRow(textBlock, i + 4);
                 Grid.SetColumn(textBlock, 6);
                 textBlock.Background = Brushes.Transparent;
@@ -115,8 +115,9 @@ namespace Kitchen.pages
             string recipeName = RecipeName.Text;
             string recipeDescription = RecipeDescription.Text;
 
-            Recipe recipe = new Recipe(recipeName, recipeDescription, ingredients, steps);
-            userData.addRecipe(recipe);
+            //Recipe recipe = new Recipe(recipeName, recipeDescription, ingredients, steps);
+
+            //userData.addRecipe(recipe);
             PageFinished(new object(), new EventArgs());
             System.Console.WriteLine("Submit suceeded");
             

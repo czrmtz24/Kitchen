@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static Kitchen.Globals;
 using Kitchen_Database;
+using Kitchen.Inventory;
+using Kitchen.Meal;
 
 namespace Kitchen
 {
@@ -31,8 +32,6 @@ namespace Kitchen
         public MainWindow()
         {
             InitializeComponent();
-            Globals.userData = new UserData();
-            
             loadRecipes();
             CreatePages();
             Main.Navigate(mainMenu);
@@ -113,19 +112,19 @@ namespace Kitchen
         public void loadRecipes() {
             string name = "Lasagna";
             string description = "The best lasagna in WSU";
-            LinkedList<string> steps = new LinkedList<string>();
-            LinkedList<Ingredient> ingredients = new LinkedList<Ingredient>();
-            Ingredient pepper = new Ingredient("pepper", "pepper", "1 tablespoon");
-            steps.AddLast("Turn oven to 350 degrees");
-            steps.AddLast("Put frozen lasagna in the oven");
-            steps.AddLast("Wait 35 minutes");
+            List<string> steps = new List<string>();
+            List<Ingredient> ingredients = new List<Ingredient>();
 
-            ingredients.AddLast(pepper);
+            Measurement measurement = new Measurement(1, "tablespoon");
+            Ingredient pepper = new Ingredient(measurement, "", "pepper");
+            steps.Add("Turn oven to 350 degrees");
+            steps.Add("Put frozen lasagna in the oven");
+            steps.Add("Wait 35 minutes");
+
+            ingredients.Add(pepper);
 
             Recipe lasagna = new Recipe(name, description, ingredients, steps);
-            
-            userData.addRecipe(lasagna);
-            //recipeList.AddLast(lasagna);
+            Kitchen_Database.Kitchen_Database.Add_RecipeToList(lasagna);
         }
         public void reset()
         {
