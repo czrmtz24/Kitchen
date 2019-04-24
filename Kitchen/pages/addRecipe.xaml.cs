@@ -1,4 +1,5 @@
-﻿using Kitchen.Inventory;
+﻿using Kitchen;
+using Kitchen.Inventory;
 using Kitchen.Meal;
 using System;
 using System.Collections.Generic;
@@ -45,9 +46,6 @@ namespace Kitchen.pages
                 //textBlock.FontWeight = FontWeights.Bold;
                 textBlock.Background = Brushes.Transparent;
                 textBlock.Margin = new Thickness(0, 0, 10, 10);
-                textBlock.MinWidth = 100;
-                textBlock.MaxWidth = 150;
-                textBlock.TextWrapping = TextWrapping.Wrap;
                 TheGrid.Children.Add(textBlock);
             }
         }
@@ -58,14 +56,11 @@ namespace Kitchen.pages
             for (int i=0; i < ingredientList.Count; i++)
             {
                 TextBlock textBlock = new TextBlock();
-                textBlock.Text = ingredientList.ElementAt(i).Name;
+                textBlock.Text = $"{ingredientList[i].Name} ({ingredientList[i].Amount.MeasurementAmount} {ingredientList[i].Amount.UnitsOfMeasurement})";
                 Grid.SetRow(textBlock, i + 4);
                 Grid.SetColumn(textBlock, 6);
                 textBlock.Background = Brushes.Transparent;
                 textBlock.Margin = new Thickness(0, 0, 10, 10);
-                textBlock.MinWidth = 100;
-                textBlock.MaxWidth = 100;
-                textBlock.TextWrapping = TextWrapping.Wrap;
                 TheGrid.Children.Add(textBlock);
             }
         }
@@ -111,16 +106,16 @@ namespace Kitchen.pages
                 System.Console.WriteLine("submit failed");
                 return;
             }
+
             choiceArray = 2;
-            string recipeName = RecipeName.Text;
-            string recipeDescription = RecipeDescription.Text;
 
-            //Recipe recipe = new Recipe(recipeName, recipeDescription, ingredients, steps);
+            m_recipe.Name = RecipeName.Text;
+            m_recipe.Description = RecipeDescription.Text;
 
-            //userData.addRecipe(recipe);
-            PageFinished(new object(), new EventArgs());
+            Kitchen_Database.Add_RecipeToList(m_recipe);
+
             System.Console.WriteLine("Submit suceeded");
-            
+            PageFinished(new object(), new EventArgs());            
         }
 
         private void Refresh()

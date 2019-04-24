@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Kitchen.Inventory;
+using Kitchen.Meal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Kitchen_Database;
-using Kitchen.Inventory;
-using Kitchen.Meal;
 
 namespace Kitchen
 {
@@ -32,6 +31,7 @@ namespace Kitchen
         public MainWindow()
         {
             InitializeComponent();
+            
             loadRecipes();
             CreatePages();
             Main.Navigate(mainMenu);
@@ -90,8 +90,6 @@ namespace Kitchen
                         Main.Navigate(addRecipe);
                         break;
                     case 3:
-                        System.Console.WriteLine($"Recipe to transition to:{recipes.recipeToView}");
-                        viewRecipes.setText(recipes.recipeToView);
                         Main.Navigate(viewRecipes);
                         break;
                 }
@@ -112,19 +110,19 @@ namespace Kitchen
         public void loadRecipes() {
             string name = "Lasagna";
             string description = "The best lasagna in WSU";
-            List<string> steps = new List<string>();
-            List<Ingredient> ingredients = new List<Ingredient>();
+            LinkedList<string> steps = new LinkedList<string>();
+            LinkedList<Ingredient> ingredients = new LinkedList<Ingredient>();
+            Ingredient pepper = new Ingredient("pepper", "pepper", "1 tablespoon");
+            steps.AddLast("Turn oven to 350 degrees");
+            steps.AddLast("Put frozen lasagna in the oven");
+            steps.AddLast("Wait 35 minutes");
 
-            Measurement measurement = new Measurement(1, "tablespoon");
-            Ingredient pepper = new Ingredient(measurement, "", "pepper");
-            steps.Add("Turn oven to 350 degrees");
-            steps.Add("Put frozen lasagna in the oven");
-            steps.Add("Wait 35 minutes");
-
-            ingredients.Add(pepper);
+            ingredients.AddLast(pepper);
 
             Recipe lasagna = new Recipe(name, description, ingredients, steps);
-            Kitchen_Database.Kitchen_Database.Add_RecipeToList(lasagna);
+            
+            userData.addRecipe(lasagna);
+            //recipeList.AddLast(lasagna);
         }
         public void reset()
         {
