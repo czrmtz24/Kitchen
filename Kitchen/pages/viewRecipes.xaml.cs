@@ -36,6 +36,14 @@ namespace Kitchen.pages
             }
             TextBlock recipeNameTextBlock = new TextBlock();
             recipeNameTextBlock.Text = recipeName;
+            Grid.SetRow(recipeNameTextBlock, 3);
+            Grid.SetColumn(recipeNameTextBlock, 2);
+            recipeNameTextBlock.FontWeight = FontWeights.Bold;
+            recipeNameTextBlock.Background = Brushes.Transparent;
+            recipeNameTextBlock.Margin = new Thickness(0, 0, 10, 10);
+            
+
+           
         }
         public void setText(string recipeName) {
             this.recipeName = recipeName;
