@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Kitchen_Inventory;
+using Kitchen_Meal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kitchen
+namespace Kitchen_Database
 {
     public static class Kitchen_Database
     {
@@ -44,10 +46,35 @@ namespace Kitchen
             return m_Inventory.Count;
         }
 
-        public static int Use_IngredientInInventory(Ingredient usedIngredient)
+        public static int Add_RecipeToList(Recipe newRecipe)
+        {
+            //Add new recipe to end of inventory list
+            m_RecipeList.Add(newRecipe);
+            return m_RecipeList.Count;
+        }
+
+        public static float Use_IngredientInInventory(Ingredient usedIngredient)
         {
             //Find the ingredient within the inventory
-            return 0;
+            int ingredientLoc = m_Inventory.IndexOf(usedIngredient);
+
+            if (ingredientLoc > -1) //If the ingredient is found within the list
+            {
+                //Calculate the amount of this ingredient left over and return
+                Ingredient currIngredient = Get_Ingredient(ingredientLoc);
+
+                currIngredient.Amount -= usedIngredient.Amount;
+                return currIngredient.Amount.MeasurementAmount;
+            }
+            else                    //Else
+                return -(usedIngredient.Amount.MeasurementAmount); //Return the total amount of this ingredient, negated
+        }
+
+        //  Private Functions   ///////////////////////////////////////////////////////////////////
+
+        private static Ingredient Get_Ingredient(int index)
+        {
+            return m_Inventory[index];
         }
     }
 }

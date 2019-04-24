@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Kitchen_Meal
 {
-    class Recipe
+    public class Recipe
     {
         //  Members ///////////////////////////////////////////////////////////////////////////////
 
