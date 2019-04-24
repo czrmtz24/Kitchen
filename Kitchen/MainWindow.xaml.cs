@@ -59,7 +59,7 @@ namespace Kitchen
             ingredients.PageFinished += pageFinished;
 
             viewRecipes = new pages.viewRecipes();
-            ingredients.PageFinished += pageFinished;
+            viewRecipes.PageFinished += pageFinished;
         }
         private void pageFinished(object sender, EventArgs e)
         {
@@ -92,6 +92,10 @@ namespace Kitchen
                         Main.Navigate(addRecipe);
                         break;
                     case 3:
+                        viewRecipes = new pages.viewRecipes();
+                        viewRecipes.PageFinished += pageFinished;
+                        viewRecipes.setText(recipes.recipeToView);
+                        viewRecipes.loadRecipe();
                         Main.Navigate(viewRecipes);
                         break;
                 }
@@ -107,6 +111,10 @@ namespace Kitchen
                         reset();
                         break;
                 }
+            }
+            else if (Main.Content == viewRecipes)
+            {
+                reset();
             }
         }
         public void loadRecipes() {

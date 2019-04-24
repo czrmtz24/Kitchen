@@ -15,12 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
-<<<<<<< HEAD
+using static Kitchen.Kitchen_Database;
 
-=======
-using static Kitchen.Globals;
-using Kitchen_Database;
->>>>>>> d91b3a541ffb055305599b93963142b823d5aa6c
 namespace Kitchen.pages
 {
     /// <summary>
@@ -40,15 +36,10 @@ namespace Kitchen.pages
         }
 
         public void loadRecipes() {
-<<<<<<< HEAD
+
             List<Recipe> recipeList = Kitchen_Database.Recipes;
 
             for (int i = 0; i < recipeList.Count; i++)
-=======
-            int count = userData.MyRecipes.Count;
-            
-            for (int i = 0; i < count; i++)
->>>>>>> d91b3a541ffb055305599b93963142b823d5aa6c
             {
                 Button button = new Button();
                 Recipe tempRecipe = recipeList[i];
@@ -75,10 +66,6 @@ namespace Kitchen.pages
             choiceArray = 3;
             Button tempButton = sender as Button;
             recipeToView = tempButton.Content.ToString();
-<<<<<<< HEAD
-=======
-            //System.Console.WriteLine(recipeToView);
->>>>>>> d91b3a541ffb055305599b93963142b823d5aa6c
             PageFinished(new object(), new EventArgs());
         }
     }
