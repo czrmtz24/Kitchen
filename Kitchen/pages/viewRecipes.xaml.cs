@@ -18,12 +18,28 @@ namespace Kitchen.pages
     /// <summary>
     /// Interaction logic for viewRecipes.xaml
     /// </summary>
+    
     public partial class viewRecipes : Page
     {
+        public string recipeName;
         public event EventHandler PageFinished;
         public viewRecipes()
         {
             InitializeComponent();
+            loadRecipe();
+        }
+        public void loadRecipe()
+        {
+            if (this.recipeName == "")
+            {
+                return;
+            }
+            TextBlock recipeNameTextBlock = new TextBlock();
+            recipeNameTextBlock.Text = recipeName;
+        }
+        public void setText(string recipeName) {
+            this.recipeName = recipeName;
+            System.Console.WriteLine($"Recipe Loaded in: {this.recipeName}");
         }
     }
 }

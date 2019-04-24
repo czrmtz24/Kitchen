@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using static Kitchen.Globals;
+using Kitchen_Database;
 namespace Kitchen.pages
 {
     /// <summary>
@@ -33,6 +34,7 @@ namespace Kitchen.pages
 
         public void loadRecipes() {
             int count = userData.MyRecipes.Count;
+            
             for (int i = 0; i < count; i++)
             {
                 Button button = new Button();
@@ -68,7 +70,7 @@ namespace Kitchen.pages
             choiceArray = 3;
             Button tempButton = sender as Button;
             recipeToView = tempButton.Content.ToString();
-            //System.Console.WriteLine(recipeName);
+            //System.Console.WriteLine(recipeToView);
             PageFinished(new object(), new EventArgs());
         }
     }

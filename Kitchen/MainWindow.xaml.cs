@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Kitchen.Globals;
-using static Kitchen.Kitchen_Database;
+using Kitchen_Database;
 
 namespace Kitchen
 {
@@ -91,6 +91,8 @@ namespace Kitchen
                         Main.Navigate(addRecipe);
                         break;
                     case 3:
+                        System.Console.WriteLine($"Recipe to transition to:{recipes.recipeToView}");
+                        viewRecipes.setText(recipes.recipeToView);
                         Main.Navigate(viewRecipes);
                         break;
                 }
