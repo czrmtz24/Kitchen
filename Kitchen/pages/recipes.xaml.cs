@@ -57,9 +57,7 @@ namespace Kitchen.pages
             choiceArray = 2;
             PageFinished(new object(), new EventArgs());
         }
-        public void getNewRecipe(object sender, RoutedEventArgs e) {
-            choiceArray = 2;
-        }
+
 
         public void toViewRecipe(object sender, RoutedEventArgs e)
         {

@@ -29,6 +29,8 @@ namespace Kitchen
         private Kitchen.pages.addRecipe addRecipe;
         private Kitchen.pages.viewRecipes viewRecipes;
         private Kitchen.pages.ingredients ingredients;
+        private Kitchen.pages.addIngredient addIngredient;
+        private Kitchen.pages.viewIngredient viewIngredient;
         
         public MainWindow()
         {
@@ -60,6 +62,12 @@ namespace Kitchen
 
             viewRecipes = new pages.viewRecipes();
             viewRecipes.PageFinished += pageFinished;
+
+            addIngredient = new pages.addIngredient();
+            addIngredient.PageFinished += pageFinished;
+
+            viewIngredient = new pages.viewIngredient();
+            viewIngredient.PageFinished += pageFinished;
         }
         private void pageFinished(object sender, EventArgs e)
         {
@@ -113,6 +121,25 @@ namespace Kitchen
                 }
             }
             else if (Main.Content == viewRecipes)
+            {
+                reset();
+            }
+            else if (Main.Content == ingredients)
+            {
+                switch (ingredients.choiceArray)
+                {
+                    case 1:
+                        reset();
+                        break;
+                    case 2:
+                        Main.Navigate(addIngredient);
+                        break;
+                    case 3:
+                        Main.Navigate(viewIngredient);
+                        break;
+                }
+            }
+            else if (Main.Content == addIngredient)
             {
                 reset();
             }

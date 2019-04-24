@@ -131,9 +131,5 @@ namespace Kitchen.pages
             loadIngredients();
         }
 
-        private void RecipeName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }
