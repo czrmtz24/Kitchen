@@ -6,14 +6,99 @@ using System.Threading.Tasks;
 
 namespace Kitchen_Inventory
 {
-
-    enum Measurement_Meta_Unit_t
+    public class Measurement
     {
-        Weight, Size, Count
+        //  Members ///////////////////////////////////////////////////////////////////////////////
+
+        private float m_fAmount;
+        private string m_sUnitsOfMeasurement;
+
+        //  Constructors    ///////////////////////////////////////////////////////////////////////
+
+        public Measurement(float fNewAmount, string sNewUnitsOfMeasurement)
+        {
+            m_fAmount = fNewAmount;
+            m_sUnitsOfMeasurement = sNewUnitsOfMeasurement;
+        }
+
+        public Measurement(Measurement M)
+        {
+            m_fAmount = M.Amount;
+            m_sUnitsOfMeasurement = M.UnitsOfMeasurement;
+        }
+
+        //  Properties  ///////////////////////////////////////////////////////////////////////////
+
+        public float Amount
+        {
+            get { return m_fAmount; }
+            set { m_fAmount = value; }
+        }
+
+        public string UnitsOfMeasurement
+        {
+            get { return m_sUnitsOfMeasurement; }
+            set { m_sUnitsOfMeasurement = value; }
+        }
+
+        //  Public Functions    ///////////////////////////////////////////////////////////////////
+
+        public static implicit operator float (Measurement measurement)
+        {
+            return measurement.Amount;
+        }
+
+        public static implicit operator Measurement(float fValue)
+        {
+            return new Measurement(fValue, "Units");
+        }
+
+        public static Measurement operator +(Measurement rhs, float lhs)
+        {
+            return new Measurement((rhs.Amount + lhs), rhs.UnitsOfMeasurement);
+        }
+
+        public static Measurement operator -(Measurement rhs, float lhs)
+        {
+            return new Measurement((rhs.Amount - lhs), rhs.UnitsOfMeasurement);
+        }
     }
 
     class Ingredient
     {
+        //  Members ///////////////////////////////////////////////////////////////////////////////
+
+        private string m_sDescription, m_sName;
+        private Measurement m_Amount;
+
+        //  Constructors    ///////////////////////////////////////////////////////////////////////
+
+        public Ingredient(Measurement amount, string sDescription, string sName)
+        {
+            m_Amount = amount;
+            m_sDescription = sDescription;
+            m_sName = sName;
+        }
+
+        //  Properties  ///////////////////////////////////////////////////////////////////////////
+
+        public Measurement Amount
+        {
+            get { return m_Amount; }
+            set { m_Amount = value; }
+        }
+
+        public string Description
+        {
+            get { return m_sDescription; }
+            set { m_sDescription = value; }
+        }
+        
+        public string Name
+        {
+            get { return m_sName; }
+            set { m_sName = value; }
+        }
 
     }
 }
