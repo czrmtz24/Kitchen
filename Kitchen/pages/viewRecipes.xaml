@@ -19,6 +19,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -36,12 +37,14 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="1" Grid.Row="2" Text="Meal Planner" Background="Transparent" FontWeight="Bold" Margin="0,0,0,0" FontSize="20"/>
-        <TextBlock Grid.Column="1" Grid.Row="3" Text="Viewing Recipe" Background="Transparent" FontWeight="Bold" Margin="0,0,0,10"/>
-       
-
+        <TextBlock Grid.Column="1" Grid.Row="2" Text="Meal Planner" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10" FontSize="20"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" Text="Viewing Recipe" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10"/>
+        <TextBlock x:Name="RecipeName" Grid.Column="1" Grid.Row="4" Text="" Background="Transparent" FontWeight="Bold" FontSize ="28"  Margin="0,0,10,10" VerticalAlignment="Center"/>
+        <TextBlock x:Name="RecipeDescription" Grid.Column="1" Grid.Row="5" Text="" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10" MinWidth="200"/>
+        <Button x:Name="DeleteRecipe" Content="Delete" Grid.Row="14" Grid.Column="9" FontWeight="Bold" Click="DeleteRecipe_Click"/>
     </Grid>
 </Page>
