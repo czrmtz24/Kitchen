@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MealWeek.cs" />
     <Compile Include="pages\addIngredient.xaml.cs">
       <DependentUpon>addIngredient.xaml</DependentUpon>
     </Compile>

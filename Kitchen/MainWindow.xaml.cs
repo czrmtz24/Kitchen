@@ -39,6 +39,7 @@ namespace Kitchen
             //loadRecipes();
             CreatePages();
             Main.Navigate(mainMenu);
+            System.Console.WriteLine((System.DayOfWeek.Friday + 1).ToString());
             
         }
         public void toRecipes()
