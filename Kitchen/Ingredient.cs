@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kitchen_Inventory
+namespace Kitchen.Inventory
 {
     public class Measurement
     {

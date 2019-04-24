@@ -1,11 +1,11 @@
-﻿using Kitchen_Inventory;
+﻿using Kitchen.Inventory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kitchen_Meal
+namespace Kitchen.Meal
 {
     public class Recipe
     {
@@ -18,10 +18,20 @@ namespace Kitchen_Meal
 
         //  Constructors    ///////////////////////////////////////////////////////////////////////
 
+        public Recipe()
+        {
+            m_sName = "";
+            m_sDescription = "";
+            m_IngredientList = new List<Ingredient>(); ;
+            m_sStepList = new List<string>();
+        }
+        
         public Recipe(string sName, string sDescription)
         {
             m_sName = sName;
             m_sDescription = sDescription;
+            m_IngredientList = new List<Ingredient>(); ;
+            m_sStepList = new List<string>();
         }
 
         public Recipe(string sName, string sDescription, 

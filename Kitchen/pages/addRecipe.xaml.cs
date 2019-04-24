@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Kitchen.Inventory;
+using Kitchen.Meal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static Kitchen.Globals;
+
+
 namespace Kitchen.pages
 {
     /// <summary>
@@ -22,20 +25,21 @@ namespace Kitchen.pages
     {
         public event EventHandler PageFinished;
         public int choiceArray;
-        LinkedList<string> steps;
-        LinkedList<Ingredient> ingredients;
+        public Recipe m_recipe;
+
         public addRecipe()
         {
             InitializeComponent();
-            steps = new LinkedList<string>();
-            ingredients = new LinkedList<Ingredient>();
+            m_recipe = new Recipe();
         }
+
         public void loadSteps() {
-            int stepCount = steps.Count;
-            for(int i = 0;i<stepCount;i++)
+            List<string> sStepList = m_recipe.Steps;
+
+            for(int i=0; i<sStepList.Count; i++)
             {
                 TextBlock textBlock = new TextBlock();
-                textBlock.Text = steps.ElementAt(i);
+                textBlock.Text = sStepList[i];
                 Grid.SetRow(textBlock, i + 4);
                 Grid.SetColumn(textBlock, 5);
                 //textBlock.FontWeight = FontWeights.Bold;
@@ -44,43 +48,57 @@ namespace Kitchen.pages
                 TheGrid.Children.Add(textBlock);
             }
         }
+
         public void loadIngredients() {
-            int ingredientCount = ingredients.Count;
-            for (int i = 0; i < ingredientCount; i++)
+            List<Ingredient> ingredientList = m_recipe.Ingredients;
+
+            for (int i=0; i < ingredientList.Count; i++)
             {
                 TextBlock textBlock = new TextBlock();
-                textBlock.Text = ingredients.ElementAt(i).Name;
+                textBlock.Text = $"{ingredientList[i].Name} ({ingredientList[i].Amount.MeasurementAmount} {ingredientList[i].Amount.UnitsOfMeasurement})";
                 Grid.SetRow(textBlock, i + 4);
                 Grid.SetColumn(textBlock, 6);
-                //textBlock.FontWeight = FontWeights.Bold;
                 textBlock.Background = Brushes.Transparent;
                 textBlock.Margin = new Thickness(0, 0, 10, 10);
                 TheGrid.Children.Add(textBlock);
             }
         }
+
         public void addStepToRecipe(object sender, RoutedEventArgs e) {
             if (StepToAdd.Text == "")
             {
                 return;
             }
             string step = StepToAdd.Text;
-            steps.AddLast(step);
+            m_recipe.Add_Step(step);
+
             StepToAdd.Text = "";
-            loadSteps();
+
+            Refresh();
         }
+
         public void addIngredientToRecipe(object sender, RoutedEventArgs e) {
             if (IngredientNameToAdd.Text == "")
             {
                 //maybe add popup to add text
                 return;
             }
-            Ingredient newIngredient = new Ingredient(IngredientNameToAdd.Text, IngredientQuantityToAdd.Text, IngredientDescriptionToAdd.Text);
-            ingredients.AddLast(newIngredient);
+            Measurement newMeasurement = new Measurement(int.Parse(IngredientQuantityToAdd.Text),
+                                                            IngredientQuantityToAdd.Text);
+
+            Ingredient newIngredient = new Ingredient(newMeasurement, 
+                                                        IngredientNameToAdd.Text, 
+                                                        IngredientDescriptionToAdd.Text);
+
+            m_recipe.Add_Ingredient(newIngredient);
+
             IngredientNameToAdd.Text = "";
             IngredientQuantityToAdd.Text = "";
             IngredientDescriptionToAdd.Text = "";
-            loadIngredients();
+
+            Refresh();
         }
+
         public void submitRecipe(object sender, RoutedEventArgs e) {
             if (RecipeName.Text == "")
             {
@@ -96,6 +114,17 @@ namespace Kitchen.pages
             PageFinished(new object(), new EventArgs());
             System.Console.WriteLine("Submit suceeded");
             
+        }
+
+        private void Refresh()
+        {
+            loadSteps();
+            loadIngredients();
+        }
+
+        private void RecipeName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
