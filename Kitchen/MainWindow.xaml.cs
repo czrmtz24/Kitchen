@@ -92,6 +92,8 @@ namespace Kitchen
                         Main.Navigate(addRecipe);
                         break;
                     case 3:
+                        viewRecipes.setText(recipes.recipeToView);
+                        viewRecipes.loadRecipe();
                         Main.Navigate(viewRecipes);
                         break;
                 }

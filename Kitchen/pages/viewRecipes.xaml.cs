@@ -41,8 +41,8 @@ namespace Kitchen.pages
             recipeNameTextBlock.FontWeight = FontWeights.Bold;
             recipeNameTextBlock.Background = Brushes.Transparent;
             recipeNameTextBlock.Margin = new Thickness(0, 0, 10, 10);
-            
 
+            TheGrid.Children.Add(recipeNameTextBlock);
            
         }
         public void setText(string recipeName) {
