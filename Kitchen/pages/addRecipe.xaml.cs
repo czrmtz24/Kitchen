@@ -46,6 +46,9 @@ namespace Kitchen.pages
                 //textBlock.FontWeight = FontWeights.Bold;
                 textBlock.Background = Brushes.Transparent;
                 textBlock.Margin = new Thickness(0, 0, 10, 10);
+                textBlock.MinWidth = 100;
+                textBlock.MaxWidth = 150;
+                textBlock.TextWrapping = TextWrapping.Wrap;
                 TheGrid.Children.Add(textBlock);
             }
         }
@@ -61,6 +64,9 @@ namespace Kitchen.pages
                 Grid.SetColumn(textBlock, 6);
                 textBlock.Background = Brushes.Transparent;
                 textBlock.Margin = new Thickness(0, 0, 10, 10);
+                textBlock.MinWidth = 100;
+                textBlock.MaxWidth = 150;
+                textBlock.TextWrapping = TextWrapping.Wrap;
                 TheGrid.Children.Add(textBlock);
             }
         }
