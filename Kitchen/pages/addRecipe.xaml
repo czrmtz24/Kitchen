@@ -56,12 +56,15 @@
         <TextBlock Grid.Column="1" Grid.Row="7" Text="Quantity:" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10"/>
         <TextBox x:Name="IngredientQuantityToAdd" Grid.Column="2" Grid.Row="7" Margin="0,0,10,10" MinWidth="100" MaxWidth="100" TextWrapping="Wrap" MaxLines="3" MaxHeight="20"/>
 
-        <TextBlock Grid.Column="1" Grid.Row="8" Text="Ingredient Description:" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10"/>
-        <TextBox x:Name="IngredientDescriptionToAdd" Grid.Column="2" Grid.Row="8" Margin="0,0,10,10" MinWidth="100" MaxWidth="100" TextWrapping="Wrap" MaxLines="3" MaxHeight="20"/>
+        <TextBlock Grid.Column="1" Grid.Row="8" Text="Quantity Type:" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10"/>
+        <TextBox x:Name="IngredientTypeToAdd" Grid.Column="2" Grid.Row="8" Margin="0,0,10,10" MinWidth="100" MaxWidth="100" TextWrapping="Wrap" MaxLines="3" MaxHeight="20"/>
 
-        <TextBlock Grid.Column="1" Grid.Row="9" Text="Step to Add:" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10"/>
-        <TextBox x:Name="StepToAdd" Grid.Column="2" Grid.Row="9" Margin="0,0,10,10" MinWidth="100" MaxWidth="100" TextWrapping="Wrap" MaxLines="3" MaxHeight="20"/>
-        <Button Content="Add Step to Recipe" Grid.Column="3" Grid.Row="9" Margin="0,0,10,10" IsTabStop="False" Click="addStepToRecipe" MaxHeight="20"/>
+        <TextBlock Grid.Column="1" Grid.Row="9" Text="Ingredient Description:" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10"/>
+        <TextBox x:Name="IngredientDescriptionToAdd" Grid.Column="2" Grid.Row="9" Margin="0,0,10,10" MinWidth="100" MaxWidth="100" TextWrapping="Wrap" MaxLines="3" MaxHeight="20"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="10" Text="Step to Add:" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10"/>
+        <TextBox x:Name="StepToAdd" Grid.Column="2" Grid.Row="10" Margin="0,0,10,10" MinWidth="100" MaxWidth="100" TextWrapping="Wrap" MaxLines="3" MaxHeight="20"/>
+        <Button Content="Add Step to Recipe" Grid.Column="3" Grid.Row="10" Margin="0,0,10,10" IsTabStop="False" Click="addStepToRecipe" MaxHeight="20"/>
         
         <TextBlock Grid.Column="5" Grid.Row="3" Text="Steps:" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10"/>
         <TextBlock Grid.Column="6" Grid.Row="3" Text="Ingredients:" Background="Transparent" FontWeight="Bold" Margin="0,0,10,10"/>

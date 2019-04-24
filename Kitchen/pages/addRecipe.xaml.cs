@@ -91,17 +91,18 @@ namespace Kitchen.pages
                 return;
             }
             Measurement newMeasurement = new Measurement(int.Parse(IngredientQuantityToAdd.Text),
-                                                            IngredientQuantityToAdd.Text);
+                                                            IngredientTypeToAdd.Text);
 
             Ingredient newIngredient = new Ingredient(newMeasurement, 
-                                                        IngredientNameToAdd.Text, 
-                                                        IngredientDescriptionToAdd.Text);
+                                                        IngredientDescriptionToAdd.Text, 
+                                                        IngredientNameToAdd.Text);
 
             m_recipe.Add_Ingredient(newIngredient);
 
             IngredientNameToAdd.Text = "";
             IngredientQuantityToAdd.Text = "";
             IngredientDescriptionToAdd.Text = "";
+            IngredientTypeToAdd.Text = "";
 
             Refresh();
         }
