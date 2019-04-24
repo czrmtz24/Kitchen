@@ -7,7 +7,6 @@ using Kitchen.Meal;
 
 namespace Kitchen
 {
-   
     enum Meals
     {
         Breakfast = 0,
@@ -41,21 +40,41 @@ namespace Kitchen
                     startDay = DayOfWeek.Sunday;
             }
         }
-
-
-
+        void setMeal(Meals mealTime, DayOfWeek dayOfWeek, Recipe recipe)
+        {
+            int weekIndex = 0;
+            for (int i = 0; i < 7; i++)
+            {
+                if (daysOfWeek.ElementAt(i) == dayOfWeek)
+                {
+                    weekIndex = i;
+                }
+            }
+            switch ((int) mealTime) {
+                case 0:
+                    //breakfast
+                    plannedMeals.ElementAt(weekIndex).Breakfast.PlannedRecipe = recipe;
+                    break;
+                case 1:
+                    plannedMeals.ElementAt(weekIndex).Lunch.PlannedRecipe = recipe;
+                    break;
+                case 2:
+                    plannedMeals.ElementAt(weekIndex).Dinner.PlannedRecipe = recipe;
+                    break;
+            }
+        }
     }
     class MealDay
     {
         PlannedMeal[] plannedMeals;
         //string dayOfWeek;
 
-        MealDay()
+        public MealDay()
         {
             plannedMeals = new PlannedMeal[3];
             //this.dayOfWeek = System.DateTime.Now.DayOfWeek.ToString();
         }
-        MealDay(PlannedMeal p1, PlannedMeal p2, PlannedMeal p3)
+        public MealDay(PlannedMeal p1, PlannedMeal p2, PlannedMeal p3)
         {
             //if ((p1.DayOfWeek == p2.DayOfWeek) && (p2.DayOfWeek == p3.DayOfWeek))
             //{
@@ -67,15 +86,15 @@ namespace Kitchen
             plannedMeals = new PlannedMeal[3] { p1, p2, p3 };
         }
 
-        PlannedMeal Breakfast {
+        public PlannedMeal Breakfast {
             get { return this.plannedMeals[0]; }
             set { this.plannedMeals[0] = value;  }
         }
-        PlannedMeal Lunch {
+        public PlannedMeal Lunch {
             get { return this.plannedMeals[1]; }
             set { this.plannedMeals[1] = value; }
         }
-        PlannedMeal Dinner {
+        public PlannedMeal Dinner {
             get { return this.plannedMeals[2]; }
             set { this.plannedMeals[2] = value; }
         }
