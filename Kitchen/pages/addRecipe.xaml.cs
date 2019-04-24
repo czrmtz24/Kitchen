@@ -45,6 +45,9 @@ namespace Kitchen.pages
                 //textBlock.FontWeight = FontWeights.Bold;
                 textBlock.Background = Brushes.Transparent;
                 textBlock.Margin = new Thickness(0, 0, 10, 10);
+                textBlock.MinWidth = 100;
+                textBlock.MaxWidth = 150;
+                textBlock.TextWrapping = TextWrapping.Wrap;
                 TheGrid.Children.Add(textBlock);
             }
         }
@@ -55,11 +58,14 @@ namespace Kitchen.pages
             for (int i=0; i < ingredientList.Count; i++)
             {
                 TextBlock textBlock = new TextBlock();
-                textBlock.Text = $"{ingredientList[i].Name} ({ingredientList[i].Amount.MeasurementAmount} {ingredientList[i].Amount.UnitsOfMeasurement})";
+                textBlock.Text = ingredients.ElementAt(i).Name;
                 Grid.SetRow(textBlock, i + 4);
                 Grid.SetColumn(textBlock, 6);
                 textBlock.Background = Brushes.Transparent;
                 textBlock.Margin = new Thickness(0, 0, 10, 10);
+                textBlock.MinWidth = 100;
+                textBlock.MaxWidth = 100;
+                textBlock.TextWrapping = TextWrapping.Wrap;
                 TheGrid.Children.Add(textBlock);
             }
         }
