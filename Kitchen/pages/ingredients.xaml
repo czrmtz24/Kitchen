@@ -36,7 +36,6 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="2" Text="Meal Planner" Background="Transparent" FontWeight="Bold" Margin="0,0,0,0" FontSize="20"/>
         <TextBlock Grid.Column="1" Grid.Row="3" Text="Ingredients" Background="Transparent" FontWeight="Bold" Margin="0,0,0,10"/>
-        <Button Content="Delete Ingredient" Grid.Column="6" Grid.Row="10" Margin="0,0,10,0"/>
         <Button Content="Add Ingredient" Grid.Column="7" Grid.Row="10" Margin="0,0,0,0"/>
     </Grid>
 </Page>
