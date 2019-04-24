@@ -23,13 +23,13 @@ namespace Kitchen_Inventory
 
         public Measurement(Measurement M)
         {
-            m_fAmount = M.Amount;
+            m_fAmount = M.MeasurementAmount;
             m_sUnitsOfMeasurement = M.UnitsOfMeasurement;
         }
 
         //  Properties  ///////////////////////////////////////////////////////////////////////////
 
-        public float Amount
+        public float MeasurementAmount
         {
             get { return m_fAmount; }
             set { m_fAmount = value; }
@@ -45,7 +45,7 @@ namespace Kitchen_Inventory
 
         public static implicit operator float (Measurement measurement)
         {
-            return measurement.Amount;
+            return measurement.MeasurementAmount;
         }
 
         public static implicit operator Measurement(float fValue)
@@ -55,16 +55,16 @@ namespace Kitchen_Inventory
 
         public static Measurement operator +(Measurement rhs, float lhs)
         {
-            return new Measurement((rhs.Amount + lhs), rhs.UnitsOfMeasurement);
+            return new Measurement((rhs.MeasurementAmount + lhs), rhs.UnitsOfMeasurement);
         }
 
         public static Measurement operator -(Measurement rhs, float lhs)
         {
-            return new Measurement((rhs.Amount - lhs), rhs.UnitsOfMeasurement);
+            return new Measurement((rhs.MeasurementAmount - lhs), rhs.UnitsOfMeasurement);
         }
     }
 
-    class Ingredient
+    public class Ingredient
     {
         //  Members ///////////////////////////////////////////////////////////////////////////////
 
