@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static Kitchen.Globals;
+using static Kitchen.Kitchen_Database;
 
 namespace Kitchen
 {
@@ -24,12 +25,14 @@ namespace Kitchen
         private Kitchen.pages.mainMenu mainMenu;
         private Kitchen.pages.recipes recipes;
         private Kitchen.pages.addRecipe addRecipe;
+        private Kitchen.pages.viewRecipes viewRecipes;
         private Kitchen.pages.ingredients ingredients;
         
         public MainWindow()
         {
             InitializeComponent();
             Globals.userData = new UserData();
+            
             loadRecipes();
             CreatePages();
             Main.Navigate(mainMenu);
@@ -52,6 +55,9 @@ namespace Kitchen
             addRecipe.PageFinished += pageFinished;
 
             ingredients = new pages.ingredients();
+            ingredients.PageFinished += pageFinished;
+
+            viewRecipes = new pages.viewRecipes();
             ingredients.PageFinished += pageFinished;
         }
         private void pageFinished(object sender, EventArgs e)
@@ -79,10 +85,13 @@ namespace Kitchen
                 switch (recipes.choiceArray)
                 {
                     case 1:
-                        //delete recipe
+                        reset();
                         break;
                     case 2:
                         Main.Navigate(addRecipe);
+                        break;
+                    case 3:
+                        Main.Navigate(viewRecipes);
                         break;
                 }
             }
@@ -112,6 +121,7 @@ namespace Kitchen
             ingredients.AddLast(pepper);
 
             Recipe lasagna = new Recipe(name, description, ingredients, steps);
+            
             userData.addRecipe(lasagna);
             //recipeList.AddLast(lasagna);
         }

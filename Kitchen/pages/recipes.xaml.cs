@@ -24,17 +24,15 @@ namespace Kitchen.pages
         LinkedList<Recipe> myRecipes;
         public event EventHandler PageFinished;
         public int choiceArray;
+        public string recipeToView;
         public recipes()
         {
             InitializeComponent();
             loadRecipes();
-
-
         }
 
         public void loadRecipes() {
             int count = userData.MyRecipes.Count;
-
             for (int i = 0; i < count; i++)
             {
                 Button button = new Button();
@@ -43,6 +41,7 @@ namespace Kitchen.pages
                 Grid.SetRow(button, i+4);
                 Grid.SetColumn(button, 1);
                 System.Console.WriteLine($"Adding recipe to recipe view: {tempRecipe.Name}");
+                button.Click += new RoutedEventHandler(toViewRecipe);
                 TheGrid.Children.Add(button);
             }
         }
@@ -53,6 +52,24 @@ namespace Kitchen.pages
         }
         public void getNewRecipe(object sender, RoutedEventArgs e) {
             choiceArray = 2;
+        }
+        public void deleteRecipe(object sender, RoutedEventArgs e)
+        {
+            if (userData.MyRecipes.Count == 0)
+            {
+                return;
+            }
+            choiceArray = 1;
+            userData.myRecipes.RemoveLast();
+            PageFinished(new object(), new EventArgs());
+        }
+        public void toViewRecipe(object sender, RoutedEventArgs e)
+        {
+            choiceArray = 3;
+            Button tempButton = sender as Button;
+            recipeToView = tempButton.Content.ToString();
+            //System.Console.WriteLine(recipeName);
+            PageFinished(new object(), new EventArgs());
         }
     }
 }

@@ -88,10 +88,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="pages\viewInventory.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="pages\viewRecipes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -110,9 +106,6 @@
     </Compile>
     <Compile Include="pages\recipes.xaml.cs">
       <DependentUpon>recipes.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="pages\viewInventory.xaml.cs">
-      <DependentUpon>viewInventory.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\viewRecipes.xaml.cs">
       <DependentUpon>viewRecipes.xaml</DependentUpon>
