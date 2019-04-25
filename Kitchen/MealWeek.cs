@@ -5,33 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 using Kitchen.Meal;
 
-namespace Kitchen
+namespace Kitchen.mealWeek
 {
-    enum Meals
+    public enum Meals
     {
         Breakfast = 0,
         Lunch = 1,
         Dinner = 2
     }
-    class MealWeek
+    public class MealWeek
     {
-        MealDay[] plannedMeals;
-        DayOfWeek[] daysOfWeek;
+        private MealDay[] plannedMeals;
+        private DayOfWeek[] daysOfWeek;
 
-        MealWeek()
+        public MealWeek()
         {
             daysOfWeek = new DayOfWeek[7] { DayOfWeek.Sunday, DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday, DayOfWeek.Saturday };
             plannedMeals = new MealDay[7];
         }
-        MealWeek (DayOfWeek startDay)
+        public MealWeek(DayOfWeek startDay)
         {
             plannedMeals = new MealDay[7];
+            for (int i = 0; i < 7; i++)
+            {
+                plannedMeals[i] = new MealDay();
+            }
+            daysOfWeek = new DayOfWeek[7];
             setWeek(startDay);
         }
 
-        void setWeek(DayOfWeek startDay)
+        public void setWeek(DayOfWeek startDay)
         {
-            for (int i = 0; i<7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 daysOfWeek[i] = startDay;
                 if (startDay != DayOfWeek.Saturday)
@@ -40,17 +45,10 @@ namespace Kitchen
                     startDay = DayOfWeek.Sunday;
             }
         }
-        void setMeal(Meals mealTime, DayOfWeek dayOfWeek, Recipe recipe)
+        public void setMeal(Meals mealTime, int index, Recipe recipe)
         {
-            int weekIndex = 0;
-            for (int i = 0; i < 7; i++)
-            {
-                if (daysOfWeek.ElementAt(i) == dayOfWeek)
-                {
-                    weekIndex = i;
-                }
-            }
-            switch ((int) mealTime) {
+            int weekIndex = index;
+            switch ((int)mealTime) {
                 case 0:
                     //breakfast
                     plannedMeals.ElementAt(weekIndex).Breakfast.PlannedRecipe = recipe;
@@ -63,15 +61,37 @@ namespace Kitchen
                     break;
             }
         }
+        public Recipe getMeal(Meals mealTime, int index)
+        {
+            MealDay temp = plannedMeals[index];
+            switch (mealTime)
+            {
+                case Meals.Breakfast:
+                    return temp.Breakfast.PlannedRecipe;
+                case Meals.Lunch:
+                    return temp.Lunch.PlannedRecipe;
+                case Meals.Dinner:
+                    return temp.Dinner.PlannedRecipe;
+                default:
+                    return new Recipe();
+            }
+        }
+        public DayOfWeek [] DaysOfWeek{
+            get { return this.daysOfWeek; }        
+        }
     }
-    class MealDay
+    public class MealDay
     {
-        PlannedMeal[] plannedMeals;
+        private PlannedMeal[] plannedMeals;
         //string dayOfWeek;
 
         public MealDay()
         {
             plannedMeals = new PlannedMeal[3];
+            for (int i = 0; i < 3; i++)
+            {
+                plannedMeals[i] = new PlannedMeal();
+            }
             //this.dayOfWeek = System.DateTime.Now.DayOfWeek.ToString();
         }
         public MealDay(PlannedMeal p1, PlannedMeal p2, PlannedMeal p3)
@@ -83,7 +103,7 @@ namespace Kitchen
             //else {
             //    dayOfWeek = "Incorrect Dates";
             //}
-            plannedMeals = new PlannedMeal[3] { p1, p2, p3 };
+            this.plannedMeals = new PlannedMeal[3] { p1, p2, p3 };
         }
 
         public PlannedMeal Breakfast {
@@ -98,12 +118,9 @@ namespace Kitchen
             get { return this.plannedMeals[2]; }
             set { this.plannedMeals[2] = value; }
         }
-       //string DayOfWeek {
-       //     get { return this.dayOfWeek; }
-       //     set { this.dayOfWeek = value; }
-       // }
+       
     }
-    class PlannedMeal
+    public class PlannedMeal
     {
         //public static readonly string[] weekDays = new string[7] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
         public static readonly string[] mealTypes = new string[3] { "Breakfast", "Lunch", "Dinner" };
@@ -112,13 +129,13 @@ namespace Kitchen
         private string mealType;
         private Recipe plannedRecipe;
 
-        PlannedMeal() {
+        public PlannedMeal() {
             //dayOfWeek = "";
             mealType = "";
             plannedRecipe = new Recipe();
         }
 
-        PlannedMeal(DayOfWeek incWeekDay, Meals incMealType, Recipe incRecipe)
+        public PlannedMeal(DayOfWeek incWeekDay, Meals incMealType, Recipe incRecipe)
         {
             //dayOfWeek = incWeekDay.ToString();
             mealType = mealTypes[(int)incMealType];

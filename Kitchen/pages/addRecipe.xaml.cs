@@ -90,6 +90,10 @@ namespace Kitchen.pages
                 //maybe add popup to add text
                 return;
             }
+            if (IngredientQuantityToAdd.Text == "")
+            {
+                return;
+            }
             Measurement newMeasurement = new Measurement(int.Parse(IngredientQuantityToAdd.Text),
                                                             IngredientTypeToAdd.Text);
 

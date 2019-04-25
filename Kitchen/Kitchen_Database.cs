@@ -15,13 +15,16 @@ namespace Kitchen
 
         private static List<Ingredient> m_Inventory;
         private static List<Recipe> m_RecipeList;
-
+        private static mealWeek.MealWeek m_MealWeek;
+        private static List<Ingredient> shoppingList;
         //  Constructor ///////////////////////////////////////////////////////////////////////////
 
         static Kitchen_Database()
         {
             m_Inventory = Kitchen.Storage.Storage.Load_Inventory();
             m_RecipeList = Kitchen.Storage.Storage.Load_Recipes();
+            m_MealWeek = new mealWeek.MealWeek(System.DateTime.Now.DayOfWeek);
+            shoppingList = new List<Ingredient>();
         }
 
         //  Properties  ///////////////////////////////////////////////////////////////////////////
@@ -36,6 +39,16 @@ namespace Kitchen
         {
             get { return m_RecipeList; }
             set { m_RecipeList = value; }
+        }
+
+        public static mealWeek.MealWeek PlannedMeals
+        {
+            get { return m_MealWeek; }
+            set { m_MealWeek = value; }
+        }
+        public static List<Ingredient> ShoppingList {
+            get { return shoppingList; }
+            set { shoppingList = value; }
         }
 
         //  Public Functions    ///////////////////////////////////////////////////////////////////
@@ -63,12 +76,18 @@ namespace Kitchen
         public static float Use_IngredientInInventory(Ingredient usedIngredient)
         {
             //Find the ingredient within the inventory
-            int ingredientLoc = m_Inventory.IndexOf(usedIngredient);
+            //int ingredientLoc = m_Inventory.IndexOf(usedIngredient);
+            int ingredientLoc = -1;
+            for (int i = 0; i < m_Inventory.Count; i++)
+            {
+                if (usedIngredient.Name == m_Inventory[i].Name)
+                    ingredientLoc = i;
+            }
 
             if (ingredientLoc > -1) //If the ingredient is found within the list
             {
                 //Calculate the amount of this ingredient left over and return
-                Ingredient currIngredient = m_Inventory[ingredientLoc];
+                Ingredient currIngredient = new Ingredient(m_Inventory[ingredientLoc].Amount, m_Inventory[ingredientLoc].Description, m_Inventory[ingredientLoc].Name);
 
                 currIngredient.Amount -= usedIngredient.Amount;
                 return currIngredient.Amount.MeasurementAmount;

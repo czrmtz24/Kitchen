@@ -60,6 +60,12 @@
     <Compile Include="pages\addIngredient.xaml.cs">
       <DependentUpon>addIngredient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\mealPlanner.xaml.cs">
+      <DependentUpon>mealPlanner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\ShoppingList.xaml.cs">
+      <DependentUpon>ShoppingList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\viewIngredient.xaml.cs">
       <DependentUpon>viewIngredient.xaml</DependentUpon>
     </Compile>
@@ -96,7 +102,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pages\mealPlanner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pages\recipes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\ShoppingList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

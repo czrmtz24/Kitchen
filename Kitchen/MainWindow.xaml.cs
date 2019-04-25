@@ -31,6 +31,8 @@ namespace Kitchen
         private Kitchen.pages.ingredients ingredients;
         private Kitchen.pages.addIngredient addIngredient;
         private Kitchen.pages.viewIngredient viewIngredient;
+        private Kitchen.pages.mealPlanner mealPlanner;
+        private Kitchen.pages.ShoppingList shoppingList;
         
         public MainWindow()
         {
@@ -69,6 +71,12 @@ namespace Kitchen
 
             viewIngredient = new pages.viewIngredient();
             viewIngredient.PageFinished += pageFinished;
+
+            mealPlanner = new pages.mealPlanner();
+            mealPlanner.PageFinished += pageFinished;
+
+            shoppingList = new pages.ShoppingList();
+            shoppingList.PageFinished += pageFinished;
         }
         private void pageFinished(object sender, EventArgs e)
         {
@@ -83,9 +91,19 @@ namespace Kitchen
                         Main.Navigate(ingredients);
                         break;
                     case 3:
-                        //Main.Navigate(shoppingList
+                        mealPlanner = new pages.mealPlanner();
+                        mealPlanner.PageFinished += pageFinished;
+                        Main.Navigate(mealPlanner);
                         break;
                     case 4:
+                        shoppingList = new pages.ShoppingList();
+                        shoppingList.PageFinished += pageFinished;
+                        Main.Navigate(shoppingList);
+                        break;
+                    case 5:
+                        //saves
+                        break;
+                    case 6:
                         this.Close();
                         break;
                 }
@@ -151,6 +169,23 @@ namespace Kitchen
             else if (Main.Content == viewIngredient)
             {
                 reset();
+            }
+            else if (Main.Content == mealPlanner)
+            {
+                switch (mealPlanner.choiceArray)
+                {
+                    case 1:
+                        reset();
+                        Kitchen_Database.PlannedMeals = new mealWeek.MealWeek(System.DateTime.Now.DayOfWeek);
+                        break;
+                    case 2:
+                        reset();
+                        break;
+                }
+            }
+            else if (Main.Content == shoppingList)
+            {
+                Main.Navigate(mainMenu);
             }
         }
         public void loadRecipes() {
