@@ -52,7 +52,7 @@ namespace Kitchen.pages
                     {
                         float amount = Kitchen_Database.Use_IngredientInInventory(bRecipe.Ingredients[x]);
                         if (amount < 0)
-                            amount *= -1;
+                            continue;
                         TextBlock textBlock = new TextBlock();
                         textBlock.Text = bRecipe.Ingredients[x].Name + " (" + amount.ToString() + " "  + bRecipe.Ingredients[x].Amount.UnitsOfMeasurement+")";
                         textBlock.Background = Brushes.Transparent;
@@ -66,7 +66,7 @@ namespace Kitchen.pages
                     {
                         float amount = Kitchen_Database.Use_IngredientInInventory(lRecipe.Ingredients[x]);
                         if (amount < 0)
-                            amount *= -1;
+                            continue;
                         TextBlock textBlock = new TextBlock();
                         textBlock.Text = lRecipe.Ingredients[x].Name + " (" + amount.ToString() + " " + lRecipe.Ingredients[x].Amount.UnitsOfMeasurement + ")";
                         textBlock.Background = Brushes.Transparent;
@@ -80,7 +80,7 @@ namespace Kitchen.pages
                     {
                         float amount = Kitchen_Database.Use_IngredientInInventory(dRecipe.Ingredients[x]);
                         if (amount < 0)
-                            amount *= -1;
+                            continue;
                         TextBlock textBlock = new TextBlock();
                         textBlock.Text = dRecipe.Ingredients[x].Name + " (" + amount.ToString() + " " + dRecipe.Ingredients[x].Amount.UnitsOfMeasurement + ")";
                         textBlock.Background = Brushes.Transparent;

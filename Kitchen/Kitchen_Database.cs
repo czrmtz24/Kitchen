@@ -89,11 +89,10 @@ namespace Kitchen
                 //Calculate the amount of this ingredient left over and return
                 Ingredient currIngredient = new Ingredient(m_Inventory[ingredientLoc].Amount, m_Inventory[ingredientLoc].Description, m_Inventory[ingredientLoc].Name);
 
-                currIngredient.Amount -= usedIngredient.Amount;
-                return currIngredient.Amount.MeasurementAmount;
+                return usedIngredient.Amount.MeasurementAmount - currIngredient.Amount.MeasurementAmount;
             }
             else                    //Else
-                return -(usedIngredient.Amount.MeasurementAmount); //Return the total amount of this ingredient, negated
+                return usedIngredient.Amount.MeasurementAmount; //Return the total amount of this ingredient, negated
         }
 
         //  Private Functions   ///////////////////////////////////////////////////////////////////

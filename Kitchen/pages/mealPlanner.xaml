@@ -42,7 +42,6 @@
     <TextBlock Grid.Column="1" Grid.Row="2" Text="Meal Planner" Background="Transparent" FontWeight="Bold" Margin="0,0,0,0" FontSize="20"/>
     <TextBlock Grid.Column="1" Grid.Row="3" Text="Planned Meals" Background="Transparent" FontWeight="Bold" Margin="0,0,0,10"/>
 
-    <Button Content="Clear" Grid.Column="9" Grid.Row="11" Margin="0,0,0,0" IsTabStop="False" Click="clear"/>
     <Button Content="Submit" Grid.Column="10" Grid.Row="11" Margin="0,0,0,0" IsTabStop="False" Click="submitPlanner"/>
     </Grid>
 </Page>
